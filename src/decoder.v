@@ -1,4 +1,4 @@
-module docoder #(
+module decoder #(
 	parameter	INIT_INFO_WID	= 2		,
 	parameter	MSG_WIDTH		= 6		,
 	parameter	GF_SIZE_LOG2	= 7		,
@@ -11,7 +11,7 @@ module docoder #(
 	parameter	RW_LATENCY		= 2
 
 )(
-	clk					,
+	clk						,
 	rst_n					,
 
 	i_strength0				,
@@ -279,7 +279,7 @@ wire	[BLK_SIZE-1:0]						w_vn_o_app;
 generate
 	for(j=0; j<BLK_SIZE; j=j+1)	begin: VN
 
-		wire	[MSG_ABS_WID-1:0]			w_vn_llr;
+		wire	[MSG_WIDTH-1:0]				w_vn_llr;
 		wire	[MSG_WIDTH*PCM_ROWN-1:0]	w_vn_c2v_bus;
 		wire	[MSG_WIDTH*PCM_ROWN-1:0]	w_vn_o_v2c_bus;
 		
