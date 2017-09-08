@@ -9,6 +9,7 @@ module cn_s #(
 
 	input	[MSG_WIDTH-1:0]					i_v2c			,	// as sign-magnitude format;
 	input	[COL_CNT_WID-1:0]				i_col_cnt		,
+	input									i_v2c_sign_old	,
 
 	output	[(MSG_WIDTH-1)*2-1:0]			o_v2c_abs		,
 	output	[COL_CNT_WID-1:0]				o_v2c_idx		,
@@ -47,9 +48,6 @@ generate
 		end
 	end
 endgenerate
-
-reg	r_v2c_sign;
-always@(posedge i_clk) r_v2c_sign <= i_v2c[MSG_WIDTH-1];
 // -----------v V2C queue v--------------------------------
 
 //----------->> Input assign >>-----------------------------
@@ -100,10 +98,13 @@ endgenerate
 
 //----------->> Sign >>-------------------------------------
 reg r_sign_tot;
+reg	r_v2c_sign;
+
+always@(posedge i_clk) r_v2c_sign <= i_v2c[MSG_WIDTH-1];
 
 always@(posedge i_clk)	begin
 	if(~i_rst_n)			r_sign_tot <= 1'd0;
-	else if(i_vld)			r_sign_tot <= i_v2c[MSG_WIDTH-1] ^ r_sign_tot;
+	else if(i_vld)			r_sign_tot <= i_v2c[MSG_WIDTH-1] ^ i_v2c_sign_old ^ r_sign_tot;
 	else;
 end
 //----------->> Sign >>-------------------------------------
@@ -111,7 +112,7 @@ end
 //----------->> Output assign >>----------------------------
 assign	o_v2c_idx = r_v2c_idx_queue[0];
 assign	o_v2c_abs = {r_v2c_queue[1], r_v2c_queue[0]};
-assign	o_v2c_sign = i_v2c[MSG_WIDTH-1];
+assign	o_v2c_sign = r_v2c_sign;
 assign	o_v2c_sign_tot = r_sign_tot;
 //----------->> Output assign >>----------------------------
 

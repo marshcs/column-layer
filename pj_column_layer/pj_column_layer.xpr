@@ -60,6 +60,15 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
+      <File Path="$PSRCDIR/sources_1/imports/src/barrel_shifter_pblk.v">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../src/barrel_shifter_pblk.v"/>
+          <Attr Name="ImportTime" Val="1501870310"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
       <File Path="$PSRCDIR/sources_1/imports/src/vn.v">
         <FileInfo>
           <Attr Name="ImportPath" Val="$PPRDIR/../src/vn.v"/>
@@ -85,19 +94,17 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/imports/src/barrel_shifter_pblk.v">
+      <File Path="$PSRCDIR/sources_1/imports/src/cn_s.v">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../src/barrel_shifter_pblk.v"/>
-          <Attr Name="ImportTime" Val="1501870310"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../src/cn_s.v"/>
+          <Attr Name="ImportTime" Val="1504601069"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/imports/src/cn_s.v">
-        <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../src/cn_s.v"/>
-          <Attr Name="ImportTime" Val="1504601069"/>
+      <File Path="$PSRCDIR/sources_1/imports/src/parity_check.v">
+        <FileInfo RelPath="parity_check.v">
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -197,7 +204,6 @@
     <FileSet Name="mem_app" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mem_app">
       <File Path="$PSRCDIR/sources_1/ip/mem_app/mem_app.xci">
         <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -212,6 +218,10 @@
         <CompFileExtendedInfo CompFileName="mem_app.xci" FileRelPathName="doc/blk_mem_gen_v8_3_changelog.txt"/>
         <CompFileExtendedInfo CompFileName="mem_app.xci" FileRelPathName="sim/mem_app.v"/>
         <CompFileExtendedInfo CompFileName="mem_app.xci" FileRelPathName="misc/blk_mem_gen_v8_3.vhd"/>
+        <CompFileExtendedInfo CompFileName="mem_app.xci" FileRelPathName="mem_app_sim_netlist.vhdl"/>
+        <CompFileExtendedInfo CompFileName="mem_app.xci" FileRelPathName="mem_app_sim_netlist.v"/>
+        <CompFileExtendedInfo CompFileName="mem_app.xci" FileRelPathName="mem_app_stub.vhdl"/>
+        <CompFileExtendedInfo CompFileName="mem_app.xci" FileRelPathName="mem_app_stub.v"/>
         <CompFileExtendedInfo CompFileName="mem_app.xci" FileRelPathName="mem_app.xml"/>
       </File>
       <Config>

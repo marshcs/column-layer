@@ -29,6 +29,8 @@ Revision 0.01 - File Created
 
 ==================================================================================== */
 
+/*	Cycle right shifter
+*/
 
 module barrel_shifter_pblk #(
 	parameter DATA_WIDTH 			= 4	,	// 单个数据位宽

@@ -29,9 +29,8 @@ endfunction
 localparam	BLK_SIZE 			= (1 << GF_SIZE_LOG2) - 1;
 localparam	COL_CNT_WID			= clog2(PCM_COLN);
 localparam	ITER_CNT_WID		= clog2(MAX_ITER);	
-localparam	ABS_WID			= MSG_WIDTH-1;
-localparam	DLY_INIT_CNS		= 5;
-localparam	DLY_INIT_EARLY_TER	= 4;
+localparam	ABS_WID				= MSG_WIDTH-1;
+
 // -------------------------^ parameter assign ^--------------
 
 reg		clk;
@@ -46,7 +45,7 @@ wire 	[BLK_SIZE-1:0]		o_decoded_info;
 wire	o_decoded_info_valid;
 wire	o_decoded_info_last;
 wire	o_init_info_ready;
-wire	o_decoding_end;
+wire	o_decode_end;
 wire	o_parity_check_satisfied;
 
 decoder #(
@@ -66,7 +65,7 @@ decoder #(
 .i_init_info				(i_init_info			),
 .i_init_info_valid			(i_init_info_valid		),
 .o_init_info_ready			(o_init_info_ready		),
-.o_decoding_end				(o_decoding_end			),
+.o_decode_end				(o_decode_end			),
 .o_parity_check_satisfied	(o_parity_check_satisfied),
 .o_decoded_info				(o_decoded_info			),
 .o_decoded_info_valid		(o_decoded_info_valid	),
@@ -98,7 +97,8 @@ end
 
 always@(posedge clk)	begin
 	if(~rst_n)							i_init_info <= 0;
-	else if(cnt >=300 && cnt <= 301)	i_init_info <= {{{2'b10}},{252{1'b0}}};
+	else if(cnt >=301 && cnt < 302)		i_init_info <= {{252{1'b0}},{1{2'b10}}};
+	// else if(cnt >=305 && cnt < 306)	i_init_info <= {{4{2'b10}},{246{1'b0}}};
 	else								i_init_info <= 0;
 end
 

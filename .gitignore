@@ -9,3 +9,5 @@
 /Layer_decoder/modelsim/
 *.cache/
 *.runs/
+*.hw/
+*.sim/
