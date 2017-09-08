@@ -16,14 +16,12 @@ module decoder_tb(
 	parameter	RW_LATENCY		= 2		;
 
 // -------------------------v clog2 v-------------------------
-
 function integer clog2;
     input integer value;
     for(clog2 = 0; value > 0; clog2 = clog2 + 1) begin
 	    value = value >> 1;
     end
 endfunction
-
 // -------------------------^ clog2 ^-------------------------
 
 
@@ -31,7 +29,7 @@ endfunction
 localparam	BLK_SIZE 			= (1 << GF_SIZE_LOG2) - 1;
 localparam	COL_CNT_WID			= clog2(PCM_COLN);
 localparam	ITER_CNT_WID		= clog2(MAX_ITER);	
-localparam	MSG_ABS_WID			= MSG_WIDTH-1;
+localparam	ABS_WID			= MSG_WIDTH-1;
 localparam	DLY_INIT_CNS		= 5;
 localparam	DLY_INIT_EARLY_TER	= 4;
 // -------------------------^ parameter assign ^--------------
@@ -91,6 +89,7 @@ always @(posedge	clk)	begin
 	else					cnt <= cnt+1;
 end
 
+
 always@(posedge clk)	begin
 	if(~rst_n)							i_init_info_valid <= 0;
 	else if(cnt >= 300 && cnt < 372)	i_init_info_valid <= 1;
@@ -99,7 +98,7 @@ end
 
 always@(posedge clk)	begin
 	if(~rst_n)							i_init_info <= 0;
-	else if(cnt >=300 && cnt <= 301)	i_init_info <= {254{1'b0}};
+	else if(cnt >=300 && cnt <= 301)	i_init_info <= {{2{2'b00}},{250{1'b0}}};
 	else								i_init_info <= 0;
 end
 
