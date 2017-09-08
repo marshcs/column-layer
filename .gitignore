@@ -4,7 +4,6 @@
 ~$*
 
 # ignore directories
-/sim
 /.vscode
 /Layer_decoder/modelsim/
 *.cache/
