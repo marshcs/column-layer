@@ -1,10 +1,10 @@
 -- Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2016.4 (win64) Build 1756540 Mon Jan 23 19:11:23 MST 2017
--- Date        : Tue Sep 05 17:08:16 2017
+-- Date        : Tue Sep 05 17:08:15 2017
 -- Host        : DESKTOP-GADFO2S running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               D:/cs/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/ip/mem_v2c_sign/mem_v2c_sign_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top mem_v2c_sign -prefix
+--               mem_v2c_sign_ mem_v2c_sign_sim_netlist.vhdl
 -- Design      : mem_v2c_sign
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -24,8 +24,6 @@ entity mem_v2c_sign_blk_mem_gen_prim_wrapper is
     addra : in STD_LOGIC_VECTOR ( 6 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 71 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mem_v2c_sign_blk_mem_gen_prim_wrapper : entity is "blk_mem_gen_prim_wrapper";
 end mem_v2c_sign_blk_mem_gen_prim_wrapper;
 
 architecture STRUCTURE of mem_v2c_sign_blk_mem_gen_prim_wrapper is
@@ -3059,8 +3057,6 @@ entity mem_v2c_sign_blk_mem_gen_prim_width is
     addra : in STD_LOGIC_VECTOR ( 6 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 71 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mem_v2c_sign_blk_mem_gen_prim_width : entity is "blk_mem_gen_prim_width";
 end mem_v2c_sign_blk_mem_gen_prim_width;
 
 architecture STRUCTURE of mem_v2c_sign_blk_mem_gen_prim_width is
@@ -3400,8 +3396,6 @@ entity mem_v2c_sign_blk_mem_gen_generic_cstr is
     addra : in STD_LOGIC_VECTOR ( 6 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 761 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mem_v2c_sign_blk_mem_gen_generic_cstr : entity is "blk_mem_gen_generic_cstr";
 end mem_v2c_sign_blk_mem_gen_generic_cstr;
 
 architecture STRUCTURE of mem_v2c_sign_blk_mem_gen_generic_cstr is
@@ -3531,8 +3525,6 @@ entity mem_v2c_sign_blk_mem_gen_top is
     addra : in STD_LOGIC_VECTOR ( 6 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 761 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mem_v2c_sign_blk_mem_gen_top : entity is "blk_mem_gen_top";
 end mem_v2c_sign_blk_mem_gen_top;
 
 architecture STRUCTURE of mem_v2c_sign_blk_mem_gen_top is
@@ -3562,8 +3554,6 @@ entity mem_v2c_sign_blk_mem_gen_v8_3_5_synth is
     addra : in STD_LOGIC_VECTOR ( 6 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 761 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mem_v2c_sign_blk_mem_gen_v8_3_5_synth : entity is "blk_mem_gen_v8_3_5_synth";
 end mem_v2c_sign_blk_mem_gen_v8_3_5_synth;
 
 architecture STRUCTURE of mem_v2c_sign_blk_mem_gen_v8_3_5_synth is
@@ -3795,8 +3785,6 @@ entity mem_v2c_sign_blk_mem_gen_v8_3_5 is
   attribute C_WRITE_WIDTH_B of mem_v2c_sign_blk_mem_gen_v8_3_5 : entity is 762;
   attribute C_XDEVICEFAMILY : string;
   attribute C_XDEVICEFAMILY of mem_v2c_sign_blk_mem_gen_v8_3_5 : entity is "virtex7";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of mem_v2c_sign_blk_mem_gen_v8_3_5 : entity is "blk_mem_gen_v8_3_5";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of mem_v2c_sign_blk_mem_gen_v8_3_5 : entity is "yes";
 end mem_v2c_sign_blk_mem_gen_v8_3_5;

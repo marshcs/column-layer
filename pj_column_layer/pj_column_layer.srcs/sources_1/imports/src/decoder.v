@@ -201,7 +201,7 @@ mem_v2c_sign inst_mem_v2c_sign (
   .addra	(r_decode_cnt_delay[3]	),  	// input wire [6 : 0] addra
   .dina		(w_cns_o_v2c_sign_bus	),    	// input wire [761 : 0] dina
   .clkb		(clk					),    	// input wire clkb
-  .addrb	(r_decode_cnt_delay[0]	),  	// input wire [6 : 0] addrb
+  .addrb	(r_decode_cnt			),  	// input wire [6 : 0] addrb
   .doutb	(w_memvs_doutb			)  		// output wire [761 : 0] doutb
 );
 // -------------------------v V2C sign memory v-------------------
@@ -237,7 +237,7 @@ generate
 			assign	w_cnr_i_v2c_abs[0] = w_cns_o_v2c_abs_bus[0][ABS_WID*(i*BLK_SIZE+j+1)-1:ABS_WID*(i*BLK_SIZE+j)];
 			assign	w_cnr_i_v2c_abs[1] = w_cns_o_v2c_abs_bus[1][ABS_WID*(i*BLK_SIZE+j+1)-1:ABS_WID*(i*BLK_SIZE+j)];
 			assign	w_cnr_i_idx_0	   = w_cns_o_v2c_idx_bus[COL_CNT_WID*(i*BLK_SIZE+j+1)-1: COL_CNT_WID*(i*BLK_SIZE+j)];
-			assign	w_cnr_i_v2c_sign   = w_cns_o_v2c_sign_bus[BLK_SIZE*i+j];
+			assign	w_cnr_i_v2c_sign   = w_memvs_doutb[BLK_SIZE*i+j];
 			assign	w_cnr_i_v2c_sign_tot = w_cns_o_v2c_sign_tot_bus[i*BLK_SIZE+j];
 			assign	w_cnr_o_c2v_bus[MSG_WIDTH*(i*BLK_SIZE+j+1)-1:MSG_WIDTH*(i*BLK_SIZE+j)] = w_cnr_o_r;
 			
@@ -366,7 +366,7 @@ generate
 		for(j=0; j<BLK_SIZE; j=j+1) begin: CN_S_unit
 
 			wire	[MSG_WIDTH-1:0]				w_cns_i_v2c			;
-			wire	[BLK_SIZE-1:0]				w_cns_i_v2c_sign_old;
+			wire								w_cns_i_v2c_sign_old;
 			wire	[ABS_WID*2-1:0]				w_cns_o_v2c_abs		;
 			wire	[COL_CNT_WID-1	:0]			w_cns_o_v2c_idx		;
 			wire								w_cns_o_v2c_sign	;
@@ -390,7 +390,7 @@ generate
 				.i_vld			(r_decoding_delay[2]	),	
 				.i_v2c			(w_cns_i_v2c			),
 				.i_col_cnt		(r_decode_cnt_delay[2]	),
-				.i_v2c_sign_old	(w_memvs_doutb			),
+				.i_v2c_sign_old	(w_cns_i_v2c_sign_old	),
 				.o_v2c_abs		(w_cns_o_v2c_abs		),
 				.o_v2c_idx		(w_cns_o_v2c_idx		),
 				.o_v2c_sign		(w_cns_o_v2c_sign		),

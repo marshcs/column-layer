@@ -1,10 +1,10 @@
 // Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2016.4 (win64) Build 1756540 Mon Jan 23 19:11:23 MST 2017
-// Date        : Tue Sep 05 17:08:16 2017
+// Date        : Tue Sep 05 17:08:15 2017
 // Host        : DESKTOP-GADFO2S running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim
-//               D:/cs/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/ip/mem_v2c_sign/mem_v2c_sign_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top mem_v2c_sign -prefix
+//               mem_v2c_sign_ mem_v2c_sign_sim_netlist.v
 // Design      : mem_v2c_sign
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -198,7 +198,6 @@ module mem_v2c_sign
         .web(1'b0));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_generic_cstr" *) 
 module mem_v2c_sign_blk_mem_gen_generic_cstr
    (doutb,
     clkb,
@@ -313,7 +312,6 @@ module mem_v2c_sign_blk_mem_gen_generic_cstr
         .wea(wea));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_prim_width" *) 
 module mem_v2c_sign_blk_mem_gen_prim_width
    (doutb,
     clkb,
@@ -698,7 +696,6 @@ module mem_v2c_sign_blk_mem_gen_prim_width__parameterized9
         .wea(wea));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_prim_wrapper" *) 
 module mem_v2c_sign_blk_mem_gen_prim_wrapper
    (doutb,
     clkb,
@@ -3412,7 +3409,6 @@ module mem_v2c_sign_blk_mem_gen_prim_wrapper__parameterized9
         .WEBWE({1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1}));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_top" *) 
 module mem_v2c_sign_blk_mem_gen_top
    (doutb,
     clkb,
@@ -3471,7 +3467,7 @@ endmodule
 (* C_USE_URAM = "0" *) (* C_WEA_WIDTH = "1" *) (* C_WEB_WIDTH = "1" *) 
 (* C_WRITE_DEPTH_A = "72" *) (* C_WRITE_DEPTH_B = "72" *) (* C_WRITE_MODE_A = "NO_CHANGE" *) 
 (* C_WRITE_MODE_B = "WRITE_FIRST" *) (* C_WRITE_WIDTH_A = "762" *) (* C_WRITE_WIDTH_B = "762" *) 
-(* C_XDEVICEFAMILY = "virtex7" *) (* ORIG_REF_NAME = "blk_mem_gen_v8_3_5" *) (* downgradeipidentifiedwarnings = "yes" *) 
+(* C_XDEVICEFAMILY = "virtex7" *) (* downgradeipidentifiedwarnings = "yes" *) 
 module mem_v2c_sign_blk_mem_gen_v8_3_5
    (clka,
     rsta,
@@ -5183,7 +5179,6 @@ module mem_v2c_sign_blk_mem_gen_v8_3_5
         .wea(wea));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_v8_3_5_synth" *) 
 module mem_v2c_sign_blk_mem_gen_v8_3_5_synth
    (doutb,
     clkb,

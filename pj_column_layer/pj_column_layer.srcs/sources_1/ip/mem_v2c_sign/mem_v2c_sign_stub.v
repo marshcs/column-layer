@@ -1,10 +1,10 @@
 // Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2016.4 (win64) Build 1756540 Mon Jan 23 19:11:23 MST 2017
-// Date        : Tue Sep 05 17:08:16 2017
+// Date        : Tue Sep 05 17:08:15 2017
 // Host        : DESKTOP-GADFO2S running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode synth_stub
-//               D:/cs/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/ip/mem_v2c_sign/mem_v2c_sign_stub.v
+// Command     : write_verilog -force -mode synth_stub -rename_top mem_v2c_sign -prefix
+//               mem_v2c_sign_ mem_v2c_sign_stub.v
 // Design      : mem_v2c_sign
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7vx485tffg1157-1

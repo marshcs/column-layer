@@ -35,13 +35,13 @@
     <Option Name="WTVcsLaunchSim" Val="0"/>
     <Option Name="WTRivieraLaunchSim" Val="0"/>
     <Option Name="WTActivehdlLaunchSim" Val="0"/>
-    <Option Name="WTXSimExportSim" Val="11"/>
-    <Option Name="WTModelSimExportSim" Val="11"/>
-    <Option Name="WTQuestaExportSim" Val="11"/>
-    <Option Name="WTIesExportSim" Val="11"/>
-    <Option Name="WTVcsExportSim" Val="11"/>
-    <Option Name="WTRivieraExportSim" Val="11"/>
-    <Option Name="WTActivehdlExportSim" Val="11"/>
+    <Option Name="WTXSimExportSim" Val="15"/>
+    <Option Name="WTModelSimExportSim" Val="15"/>
+    <Option Name="WTQuestaExportSim" Val="15"/>
+    <Option Name="WTIesExportSim" Val="15"/>
+    <Option Name="WTVcsExportSim" Val="15"/>
+    <Option Name="WTRivieraExportSim" Val="15"/>
+    <Option Name="WTActivehdlExportSim" Val="15"/>
     <Option Name="GenerateIPUpgradeLog" Val="TRUE"/>
     <Option Name="XSimRadix" Val="hex"/>
     <Option Name="XSimTimeUnit" Val="ns"/>
@@ -110,6 +110,13 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
+      <File Path="$PSRCDIR/sources_1/ip/mem_v2c_sign/mem_v2c_sign.xci">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
       <File Path="$PSRCDIR/sources_1/imports/src/decoder.v">
         <FileInfo>
           <Attr Name="ImportPath" Val="$PPRDIR/../src/decoder.v"/>
@@ -158,19 +165,6 @@
         <Option Name="SrcSet" Val="sources_1"/>
       </Config>
     </FileSet>
-    <FileSet Name="mem_v2c_sign" Type="BlockSrcs" RelSrcDir="$PSRCDIR/mem_v2c_sign">
-      <File Path="$PSRCDIR/sources_1/ip/mem_v2c_sign/mem_v2c_sign.xci">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <Config>
-        <Option Name="TopModule" Val="mem_v2c_sign"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
     <FileSet Name="rom_shift" Type="BlockSrcs" RelSrcDir="$PSRCDIR/rom_shift">
       <File Path="$PSRCDIR/sources_1/ip/rom_shift/rom_shift.xci">
         <FileInfo>
@@ -178,23 +172,6 @@
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
-        <CompFileExtendedInfo CompFileName="rom_shift.xci" FileRelPathName="simulation/blk_mem_gen_v8_3.v"/>
-        <CompFileExtendedInfo CompFileName="rom_shift.xci" FileRelPathName="rom_shift_ooc.xdc"/>
-        <CompFileExtendedInfo CompFileName="rom_shift.xci" FileRelPathName="synth/rom_shift.vhd"/>
-        <CompFileExtendedInfo CompFileName="rom_shift.xci" FileRelPathName="hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd"/>
-        <CompFileExtendedInfo CompFileName="rom_shift.xci" FileRelPathName="sim/rom_shift.v"/>
-        <CompFileExtendedInfo CompFileName="rom_shift.xci" FileRelPathName="misc/blk_mem_gen_v8_3.vhd"/>
-        <CompFileExtendedInfo CompFileName="rom_shift.xci" FileRelPathName="summary.log"/>
-        <CompFileExtendedInfo CompFileName="rom_shift.xci" FileRelPathName="rom_shift.veo"/>
-        <CompFileExtendedInfo CompFileName="rom_shift.xci" FileRelPathName="rom_shift.vho"/>
-        <CompFileExtendedInfo CompFileName="rom_shift.xci" FileRelPathName="doc/blk_mem_gen_v8_3_changelog.txt"/>
-        <CompFileExtendedInfo CompFileName="rom_shift.xci" FileRelPathName="rom_shift.xml"/>
-        <CompFileExtendedInfo CompFileName="rom_shift.xci" FileRelPathName="d:/cs/column-layer/mat/matrix.coe"/>
-        <CompFileExtendedInfo CompFileName="rom_shift.xci" FileRelPathName="rom_shift.mif"/>
-        <CompFileExtendedInfo CompFileName="rom_shift.xci" FileRelPathName="rom_shift_sim_netlist.vhdl"/>
-        <CompFileExtendedInfo CompFileName="rom_shift.xci" FileRelPathName="rom_shift_sim_netlist.v"/>
-        <CompFileExtendedInfo CompFileName="rom_shift.xci" FileRelPathName="rom_shift_stub.vhdl"/>
-        <CompFileExtendedInfo CompFileName="rom_shift.xci" FileRelPathName="rom_shift_stub.v"/>
       </File>
       <Config>
         <Option Name="TopModule" Val="rom_shift"/>
@@ -208,21 +185,6 @@
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
-        <CompFileExtendedInfo CompFileName="mem_app.xci" FileRelPathName="mem_app.veo"/>
-        <CompFileExtendedInfo CompFileName="mem_app.xci" FileRelPathName="mem_app.vho"/>
-        <CompFileExtendedInfo CompFileName="mem_app.xci" FileRelPathName="synth/mem_app.vhd"/>
-        <CompFileExtendedInfo CompFileName="mem_app.xci" FileRelPathName="mem_app_ooc.xdc"/>
-        <CompFileExtendedInfo CompFileName="mem_app.xci" FileRelPathName="simulation/blk_mem_gen_v8_3.v"/>
-        <CompFileExtendedInfo CompFileName="mem_app.xci" FileRelPathName="hdl/blk_mem_gen_v8_3_vhsyn_rfs.vhd"/>
-        <CompFileExtendedInfo CompFileName="mem_app.xci" FileRelPathName="summary.log"/>
-        <CompFileExtendedInfo CompFileName="mem_app.xci" FileRelPathName="doc/blk_mem_gen_v8_3_changelog.txt"/>
-        <CompFileExtendedInfo CompFileName="mem_app.xci" FileRelPathName="sim/mem_app.v"/>
-        <CompFileExtendedInfo CompFileName="mem_app.xci" FileRelPathName="misc/blk_mem_gen_v8_3.vhd"/>
-        <CompFileExtendedInfo CompFileName="mem_app.xci" FileRelPathName="mem_app_sim_netlist.vhdl"/>
-        <CompFileExtendedInfo CompFileName="mem_app.xci" FileRelPathName="mem_app_sim_netlist.v"/>
-        <CompFileExtendedInfo CompFileName="mem_app.xci" FileRelPathName="mem_app_stub.vhdl"/>
-        <CompFileExtendedInfo CompFileName="mem_app.xci" FileRelPathName="mem_app_stub.v"/>
-        <CompFileExtendedInfo CompFileName="mem_app.xci" FileRelPathName="mem_app.xml"/>
       </File>
       <Config>
         <Option Name="TopModule" Val="mem_app"/>
@@ -257,14 +219,6 @@
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
     </Run>
-    <Run Id="mem_v2c_sign_synth_1" Type="Ft3:Synth" SrcSet="mem_v2c_sign" Part="xc7vx485tffg1157-1" ConstrsSet="mem_v2c_sign" Description="Vivado Synthesis Defaults" Dir="$PRUNDIR/mem_v2c_sign_synth_1" IncludeInArchive="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2016"/>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
     <Run Id="rom_shift_synth_1" Type="Ft3:Synth" SrcSet="rom_shift" Part="xc7vx485tffg1157-1" ConstrsSet="rom_shift" Description="Vivado Synthesis Defaults" Dir="$PRUNDIR/rom_shift_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2016"/>
@@ -275,30 +229,13 @@
     </Run>
     <Run Id="mem_app_synth_1" Type="Ft3:Synth" SrcSet="mem_app" Part="xc7vx485tffg1157-1" ConstrsSet="mem_app" Description="Vivado Synthesis Defaults" Dir="$PRUNDIR/mem_app_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2016">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2016"/>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
     </Run>
     <Run Id="impl_1" Type="Ft2:EntireDesign" Part="xc7vx485tffg1157-1" ConstrsSet="constrs_1" Description="Default settings for Implementation." State="current" SynthRun="synth_1" IncludeInArchive="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2016"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-    </Run>
-    <Run Id="mem_v2c_sign_impl_1" Type="Ft2:EntireDesign" Part="xc7vx485tffg1157-1" ConstrsSet="mem_v2c_sign" Description="Default settings for Implementation." SynthRun="mem_v2c_sign_synth_1" IncludeInArchive="false">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2016"/>
         <Step Id="init_design"/>
@@ -330,9 +267,7 @@
     </Run>
     <Run Id="mem_app_impl_1" Type="Ft2:EntireDesign" Part="xc7vx485tffg1157-1" ConstrsSet="mem_app" Description="Default settings for Implementation." SynthRun="mem_app_synth_1" IncludeInArchive="false">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2016">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2016"/>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
