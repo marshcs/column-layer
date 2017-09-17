@@ -19,7 +19,7 @@
 	llr = zeros(blk_size,pcm_coln);
     for row = 1:blk_size
         for col = 1:pcm_coln
-        if row<50 && mod(col*blk_size+row,196) == 4
+        if  mod(col*blk_size+row,196) == 4
             
             llr(row,col) = 1;
         end
@@ -28,10 +28,11 @@
     llr_1_idx = find(llr);
     fprintf('num of error bit: %d\n',size(llr_1_idx,1))
     
-% 	v = decoder_vss(llr,base_matrix,PARA);
-%     find(v);
-%     num_of_1 = length(find(v))
     clear col row 
     save('ldpc.mat');
+	
+	v = decoder_vss(llr,base_matrix,PARA);
+    find(v);
+    num_of_1 = length(find(v))
     
     
