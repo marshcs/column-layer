@@ -19,8 +19,7 @@
 	llr = zeros(blk_size,pcm_coln);
     for row = 1:blk_size
         for col = 1:pcm_coln
-        if row<50 && mod(col*blk_size+row,196) == 4
-            
+        if mod(col*blk_size+row,246) == 0
             llr(row,col) = 1;
         end
         end
@@ -32,6 +31,6 @@
 %     find(v);
 %     num_of_1 = length(find(v))
     clear col row 
-    save('ldpc.mat');
+    save(ldc.mat')
     
     
