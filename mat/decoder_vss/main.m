@@ -1,6 +1,7 @@
 	clc
     clearvars
 	load('base_matrix.mat');
+    is_pipeline = 0;
     num_of_err = 35;
 
 	base_matrix = base_matrix(:,1:72);
@@ -25,11 +26,16 @@
         llr(ran_err) = 1;
         % fprintf('num of error bit: %d\n',size(llr_err_idx,1))
         % save('ldpc.mat');
-	    [v,decoded] = decoder_vss(llr,base_matrix,PARA);
+	    if  is_pipeline
+            [v,decoded] = decoder_vss(llr,base_matrix,PARA);
+        else
+            [v,decoded] = decoded_vss1(llr,base_matrix,PARA);
+        end
         tot_frame = tot_frame + 1;
         if ~decoded
             err_frame = err_frame + 1;
         end
+        fprintf('err_frame = %d tot_frame = %d\n',err_frame,tot_frame);
     end
 
     FER = err_frame/tot_frame;
