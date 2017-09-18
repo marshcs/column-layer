@@ -2,7 +2,7 @@
     clearvars
 	load('base_matrix.mat');
     is_pipeline = 0;
-    num_of_err = 35;
+    num_of_err = 45;
 
 	base_matrix = base_matrix(:,1:72);
 	PARA = struct();
@@ -20,7 +20,7 @@
     err_frame = 0;
     tot_frame = 0;
 
-    while err_frame < 100
+    while err_frame < 10
     	llr = zeros(blk_size,pcm_coln);
         ran_err = ceil(rand(num_of_err,1)*code_length);
         llr(ran_err) = 1;
@@ -29,7 +29,7 @@
 	    if  is_pipeline
             [v,decoded] = decoder_vss(llr,base_matrix,PARA);
         else
-            [v,decoded] = decoded_vss1(llr,base_matrix,PARA);
+            [v,decoded] = decoder_vss1(llr,base_matrix,PARA);
         end
         tot_frame = tot_frame + 1;
         if ~decoded

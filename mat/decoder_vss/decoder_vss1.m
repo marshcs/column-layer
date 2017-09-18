@@ -1,4 +1,4 @@
-function [decode_bit,decoded] = decoder_vss(llr,base_matrix,PARA)
+function [decode_bit,decoded] = decoder_vss1(llr,base_matrix,PARA)
 
     do_break = 1;
     max_iter = PARA.max_iter;

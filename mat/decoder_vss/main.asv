@@ -1,7 +1,8 @@
 	clc
     clearvars
 	load('base_matrix.mat');
-
+    is_pipeline = 0;
+    num_of_err = 45;
 
 	base_matrix = base_matrix(:,1:72);
 	PARA = struct();
@@ -14,23 +15,28 @@
 
 	blk_size = PARA.blk_size;
     pcm_coln = 72;
+    code_length = blk_size*pcm_coln;
 
+    err_frame = 0;
+    tot_frame = 0;
 
-	llr = zeros(blk_size,pcm_coln);
-    for row = 1:blk_size
-        for col = 1:pcm_coln
-        if mod(col*blk_size+row,246) == 0
-            llr(row,col) = 1;
+    while err_frame < 10
+    	llr = zeros(blk_size,pcm_coln);
+        ran_err = ceil(rand(num_of_err,1)*code_length);
+        llr(ran_err) = 1;
+        % fprintf('num of error bit: %d\n',size(llr_err_idx,1))
+        % save('ldpc.mat');
+	    if  is_pipeline
+            [v,decoded] = decoder_vss(llr,base_matrix,PARA);
+        else
+            [v,decoded] = decoder_vss1(llr,base_matrix,PARA);
         end
+        tot_frame = tot_frame + 1;
+        if ~decoded
+            err_frame = err_frame + 1;
         end
+        fprintf('err_frame = %d tot_frame = %d\n',err_frame,tot_frame);
     end
-    llr_1_idx = find(llr);
-    fprintf('num of error bit: %d\n',size(llr_1_idx,1))
-    
-% 	v = decoder_vss(llr,base_matrix,PARA);
-%     find(v);
-%     num_of_1 = length(find(v))
-    clear col row 
-    save(ldc.mat')
-    
-    
+
+    FER = err_frame/tot_frame;
+
