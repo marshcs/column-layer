@@ -1,4 +1,4 @@
-function [decode_bit] = decoder_vss(llr,base_matrix,PARA)
+function [decode_bit,decoded] = decoder_vss(llr,base_matrix,PARA)
     % clearvars
     % load('ldpc.mat');
  
@@ -75,10 +75,10 @@ function [decode_bit] = decoder_vss(llr,base_matrix,PARA)
 				app_diff_shift(end-base_matrix(row,col)+1:end,row)	= app_diff(1:base_matrix(row,col));
 			end
 			check_sum = xor(check_sum,app_diff_shift);
-			parity_check_ok = (~any(check_sum(:)) & iter ~=1);
+			decoded = (~any(check_sum(:)) & iter ~=1);
 			
 			% output 
-			if(parity_check_ok && do_break)
+			if(decoded && do_break)
                 break;
             end
 
@@ -120,12 +120,12 @@ function [decode_bit] = decoder_vss(llr,base_matrix,PARA)
 			
 		end
 
-        if(parity_check_ok && do_break)
+        if(decoded && do_break)
             break;
         end
 	end
 
-	if(~parity_check_ok)
+	if(~decoded)
 		decode_bit = reshape(pip_mem_app{1},1,blk_size*pcm_coln);
 		fprintf('decode fail\n');
     else
