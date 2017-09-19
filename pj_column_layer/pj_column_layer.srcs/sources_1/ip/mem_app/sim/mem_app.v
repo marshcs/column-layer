@@ -79,8 +79,8 @@ input wire [6 : 0] addrb;
 output wire [126 : 0] doutb;
 
   blk_mem_gen_v8_3_5 #(
-    .C_FAMILY("virtex7"),
-    .C_XDEVICEFAMILY("virtex7"),
+    .C_FAMILY("virtexu"),
+    .C_XDEVICEFAMILY("virtexu"),
     .C_ELABORATION_DIR("./"),
     .C_INTERFACE_TYPE(0),
     .C_AXI_TYPE(1),
@@ -107,7 +107,7 @@ output wire [126 : 0] doutb;
     .C_HAS_REGCEA(0),
     .C_USE_BYTE_WEA(0),
     .C_WEA_WIDTH(1),
-    .C_WRITE_MODE_A("NO_CHANGE"),
+    .C_WRITE_MODE_A("WRITE_FIRST"),
     .C_WRITE_WIDTH_A(127),
     .C_READ_WIDTH_A(127),
     .C_WRITE_DEPTH_A(72),
@@ -151,7 +151,7 @@ output wire [126 : 0] doutb;
     .C_DISABLE_WARN_BHV_RANGE(0),
     .C_COUNT_36K_BRAM("2"),
     .C_COUNT_18K_BRAM("0"),
-    .C_EST_POWER_SUMMARY("Estimated Power for IP     :     13.897 mW")
+    .C_EST_POWER_SUMMARY("Estimated Power for IP     :     9.173641 mW")
   ) inst (
     .clka(clka),
     .rsta(1'D0),

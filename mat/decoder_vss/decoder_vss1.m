@@ -9,6 +9,7 @@ function [decode_bit,decoded] = decoder_vss1(llr,base_matrix,PARA)
 	min_num = PARA.min_num;
 	strength = PARA.strength;
 	max_col_cnt = 2 ^ 7 - 1;
+    inv_base_matrix = 127-base_matrix;
 
     c2v_gen_shift = zeros(blk_size,pcm_rown);
     v2c_shift = zeros(blk_size,pcm_rown);
@@ -57,24 +58,24 @@ function [decode_bit,decoded] = decoder_vss1(llr,base_matrix,PARA)
 			% parity_check
 			old_app = mem_app(:,col);
 			mem_app(:,col) = app;
-			app_diff = xor(mem_app(:,col),old_app);
+			app_diff = xor(app,old_app);
 			for row = 1:pcm_rown
-				app_diff_shift(1:end-base_matrix(row,col),row)		= app_diff(base_matrix(row,col)+1:end);
-				app_diff_shift(end-base_matrix(row,col)+1:end,row)	= app_diff(1:base_matrix(row,col));
+				app_diff_shift(1:end-inv_base_matrix(row,col),row)		= app_diff(inv_base_matrix(row,col)+1:end);
+				app_diff_shift(end-inv_base_matrix(row,col)+1:end,row)	= app_diff(1:inv_base_matrix(row,col));
 			end
 			check_sum = xor(check_sum,app_diff_shift);
 			decoded = (~any(check_sum(:)) & iter ~=1);
 			
 			% output 
-			if(decoded & do_break)
+			if(decoded && do_break)
                 break;
             end
 
 			
 			% reverse_shifter
 			for row = 1:pcm_rown
-				v2c_shift(1:end-base_matrix(row,col),row)		= v2c_clip(base_matrix(row,col)+1:end,row);
-				v2c_shift(end-base_matrix(row,col)+1:end,row)	= v2c_clip(1:base_matrix(row,col),row);
+				v2c_shift(1:end-inv_base_matrix(row,col),row)		= v2c_clip(inv_base_matrix(row,col)+1:end,row);
+				v2c_shift(end-inv_base_matrix(row,col)+1:end,row)	= v2c_clip(1:inv_base_matrix(row,col),row);
 			end
 			
 			% cns

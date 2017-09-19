@@ -73,8 +73,8 @@ input wire [253 : 0] dina;
 output wire [253 : 0] douta;
 
   blk_mem_gen_v8_3_5 #(
-    .C_FAMILY("virtex7"),
-    .C_XDEVICEFAMILY("virtex7"),
+    .C_FAMILY("virtexu"),
+    .C_XDEVICEFAMILY("virtexu"),
     .C_ELABORATION_DIR("./"),
     .C_INTERFACE_TYPE(0),
     .C_AXI_TYPE(1),
@@ -145,7 +145,7 @@ output wire [253 : 0] douta;
     .C_DISABLE_WARN_BHV_RANGE(0),
     .C_COUNT_36K_BRAM("4"),
     .C_COUNT_18K_BRAM("0"),
-    .C_EST_POWER_SUMMARY("Estimated Power for IP     :     26.7318 mW")
+    .C_EST_POWER_SUMMARY("Estimated Power for IP     :     26.72771 mW")
   ) inst (
     .clka(clka),
     .rsta(1'D0),

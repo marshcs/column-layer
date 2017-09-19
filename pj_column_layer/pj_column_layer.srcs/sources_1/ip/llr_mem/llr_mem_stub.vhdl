@@ -1,13 +1,13 @@
 -- Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2016.4 (win64) Build 1756540 Mon Jan 23 19:11:23 MST 2017
--- Date        : Sun Sep 03 19:22:28 2017
--- Host        : DESKTOP-GADFO2S running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode synth_stub -rename_top llr_mem -prefix
---               llr_mem_ llr_mem_stub.vhdl
+-- Date        : Mon Sep 18 16:51:10 2017
+-- Host        : DESKTOP-PDSMUE7 running 64-bit major release  (build 9200)
+-- Command     : write_vhdl -force -mode synth_stub
+--               E:/CS/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/ip/llr_mem/llr_mem_stub.vhdl
 -- Design      : llr_mem
 -- Purpose     : Stub declaration of top-level module interface
--- Device      : xc7vx485tffg1157-1
+-- Device      : xcvu440-flga2892-2-e
 -- --------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;

@@ -1,14 +1,14 @@
 // Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2016.4 (win64) Build 1756540 Mon Jan 23 19:11:23 MST 2017
-// Date        : Wed Sep 06 11:16:51 2017
-// Host        : DESKTOP-GADFO2S running 64-bit major release  (build 9200)
+// Date        : Mon Sep 18 16:51:10 2017
+// Host        : DESKTOP-PDSMUE7 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
-//               D:/cs/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/ip/rom_shift/rom_shift_sim_netlist.v
+//               E:/CS/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/ip/rom_shift/rom_shift_sim_netlist.v
 // Design      : rom_shift
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
-// Device      : xc7vx485tffg1157-1
+// Device      : xcvu440-flga2892-2-e
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
@@ -69,8 +69,8 @@ module rom_shift
   (* C_EN_SAFETY_CKT = "0" *) 
   (* C_EN_SHUTDOWN_PIN = "0" *) 
   (* C_EN_SLEEP_PIN = "0" *) 
-  (* C_EST_POWER_SUMMARY = "Estimated Power for IP     :     5.596 mW" *) 
-  (* C_FAMILY = "virtex7" *) 
+  (* C_EST_POWER_SUMMARY = "Estimated Power for IP     :     5.908882 mW" *) 
+  (* C_FAMILY = "virtexu" *) 
   (* C_HAS_AXI_ID = "0" *) 
   (* C_HAS_ENA = "0" *) 
   (* C_HAS_ENB = "0" *) 
@@ -118,7 +118,7 @@ module rom_shift
   (* C_WRITE_MODE_B = "WRITE_FIRST" *) 
   (* C_WRITE_WIDTH_A = "42" *) 
   (* C_WRITE_WIDTH_B = "42" *) 
-  (* C_XDEVICEFAMILY = "virtex7" *) 
+  (* C_XDEVICEFAMILY = "virtexu" *) 
   (* downgradeipidentifiedwarnings = "yes" *) 
   rom_shift_blk_mem_gen_v8_3_5 U0
        (.addra(addra),
@@ -190,94 +190,114 @@ endmodule
 module rom_shift_blk_mem_gen_generic_cstr
    (douta,
     clka,
+    sleep,
     addra);
   output [41:0]douta;
   input clka;
+  input sleep;
   input [6:0]addra;
 
   wire [6:0]addra;
   wire clka;
   wire [41:0]douta;
+  wire sleep;
 
   rom_shift_blk_mem_gen_prim_width \ramloop[0].ram.r 
        (.addra(addra),
         .clka(clka),
-        .douta(douta));
+        .douta(douta),
+        .sleep(sleep));
 endmodule
 
 (* ORIG_REF_NAME = "blk_mem_gen_prim_width" *) 
 module rom_shift_blk_mem_gen_prim_width
    (douta,
     clka,
+    sleep,
     addra);
   output [41:0]douta;
   input clka;
+  input sleep;
   input [6:0]addra;
 
   wire [6:0]addra;
   wire clka;
   wire [41:0]douta;
+  wire sleep;
 
   rom_shift_blk_mem_gen_prim_wrapper_init \prim_init.ram 
        (.addra(addra),
         .clka(clka),
-        .douta(douta));
+        .douta(douta),
+        .sleep(sleep));
 endmodule
 
 (* ORIG_REF_NAME = "blk_mem_gen_prim_wrapper_init" *) 
 module rom_shift_blk_mem_gen_prim_wrapper_init
    (douta,
     clka,
+    sleep,
     addra);
   output [41:0]douta;
   input clka;
+  input sleep;
   input [6:0]addra;
 
-  wire \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_21 ;
-  wire \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_22 ;
-  wire \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_23 ;
-  wire \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_29 ;
-  wire \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_30 ;
-  wire \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_31 ;
-  wire \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_37 ;
-  wire \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_38 ;
-  wire \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_39 ;
-  wire \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_45 ;
-  wire \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_46 ;
-  wire \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_53 ;
-  wire \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_54 ;
-  wire \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_55 ;
-  wire \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_61 ;
-  wire \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_62 ;
-  wire \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_63 ;
-  wire \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_69 ;
-  wire \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_70 ;
-  wire \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_71 ;
-  wire \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_77 ;
-  wire \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_78 ;
-  wire \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_85 ;
-  wire \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_86 ;
-  wire \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_87 ;
-  wire \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_88 ;
-  wire \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_89 ;
-  wire \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_90 ;
-  wire \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_91 ;
-  wire \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_92 ;
+  wire \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_100 ;
+  wire \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_101 ;
+  wire \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_102 ;
+  wire \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_108 ;
+  wire \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_109 ;
+  wire \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_110 ;
+  wire \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_116 ;
+  wire \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_117 ;
+  wire \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_118 ;
+  wire \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_124 ;
+  wire \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_125 ;
+  wire \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_140 ;
+  wire \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_141 ;
+  wire \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_142 ;
+  wire \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_143 ;
+  wire \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_144 ;
+  wire \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_145 ;
+  wire \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_146 ;
+  wire \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_147 ;
+  wire \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_68 ;
+  wire \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_69 ;
+  wire \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_70 ;
+  wire \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_76 ;
+  wire \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_77 ;
+  wire \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_78 ;
+  wire \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_84 ;
+  wire \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_85 ;
+  wire \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_86 ;
+  wire \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_92 ;
+  wire \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_93 ;
   wire [6:0]addra;
   wire clka;
   wire [41:0]douta;
-  wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_CASCADEOUTA_UNCONNECTED ;
-  wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_CASCADEOUTB_UNCONNECTED ;
-  wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_DBITERR_UNCONNECTED ;
-  wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_SBITERR_UNCONNECTED ;
-  wire [7:0]\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_ECCPARITY_UNCONNECTED ;
-  wire [8:0]\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_RDADDRECC_UNCONNECTED ;
+  wire sleep;
+  wire \NLW_DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_CASOUTDBITERR_UNCONNECTED ;
+  wire \NLW_DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_CASOUTSBITERR_UNCONNECTED ;
+  wire \NLW_DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_DBITERR_UNCONNECTED ;
+  wire \NLW_DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_SBITERR_UNCONNECTED ;
+  wire [31:0]\NLW_DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_CASDOUTA_UNCONNECTED ;
+  wire [31:0]\NLW_DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_CASDOUTB_UNCONNECTED ;
+  wire [3:0]\NLW_DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_CASDOUTPA_UNCONNECTED ;
+  wire [3:0]\NLW_DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_CASDOUTPB_UNCONNECTED ;
+  wire [7:0]\NLW_DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_ECCPARITY_UNCONNECTED ;
+  wire [8:0]\NLW_DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_RDADDRECC_UNCONNECTED ;
 
-  (* CLOCK_DOMAINS = "COMMON" *) 
   (* box_type = "PRIMITIVE" *) 
-  RAMB36E1 #(
+  RAMB36E2 #(
+    .CASCADE_ORDER_A("NONE"),
+    .CASCADE_ORDER_B("NONE"),
+    .CLOCK_DOMAINS("COMMON"),
     .DOA_REG(1),
     .DOB_REG(1),
+    .ENADDRENA("FALSE"),
+    .ENADDRENB("FALSE"),
+    .EN_ECC_PIPE("FALSE"),
     .EN_ECC_READ("FALSE"),
     .EN_ECC_WRITE("FALSE"),
     .INITP_00(256'h0000000000000000000000000000000000000000000000000000000000000000),
@@ -435,53 +455,73 @@ module rom_shift_blk_mem_gen_prim_wrapper_init
     .IS_RSTRAMB_INVERTED(1'b0),
     .IS_RSTREGARSTREG_INVERTED(1'b0),
     .IS_RSTREGB_INVERTED(1'b0),
-    .RAM_EXTENSION_A("NONE"),
-    .RAM_EXTENSION_B("NONE"),
-    .RAM_MODE("TDP"),
-    .RDADDR_COLLISION_HWCONFIG("DELAYED_WRITE"),
+    .RDADDRCHANGEA("FALSE"),
+    .RDADDRCHANGEB("FALSE"),
     .READ_WIDTH_A(36),
     .READ_WIDTH_B(36),
     .RSTREG_PRIORITY_A("REGCE"),
     .RSTREG_PRIORITY_B("REGCE"),
     .SIM_COLLISION_CHECK("ALL"),
-    .SIM_DEVICE("7SERIES"),
+    .SLEEP_ASYNC("FALSE"),
     .SRVAL_A(36'h000000000),
     .SRVAL_B(36'h000000000),
     .WRITE_MODE_A("WRITE_FIRST"),
     .WRITE_MODE_B("WRITE_FIRST"),
     .WRITE_WIDTH_A(36),
     .WRITE_WIDTH_B(36)) 
-    \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram 
-       (.ADDRARDADDR({1'b1,1'b0,1'b0,addra,1'b0,1'b1,1'b1,1'b1,1'b1,1'b1}),
-        .ADDRBWRADDR({1'b1,1'b0,1'b0,addra,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1}),
-        .CASCADEINA(1'b0),
-        .CASCADEINB(1'b0),
-        .CASCADEOUTA(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_CASCADEOUTA_UNCONNECTED ),
-        .CASCADEOUTB(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_CASCADEOUTB_UNCONNECTED ),
+    \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram 
+       (.ADDRARDADDR({1'b0,1'b0,addra,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .ADDRBWRADDR({1'b0,1'b0,addra,1'b1,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .ADDRENA(1'b0),
+        .ADDRENB(1'b0),
+        .CASDIMUXA(1'b0),
+        .CASDIMUXB(1'b0),
+        .CASDINA({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .CASDINB({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .CASDINPA({1'b0,1'b0,1'b0,1'b0}),
+        .CASDINPB({1'b0,1'b0,1'b0,1'b0}),
+        .CASDOMUXA(1'b0),
+        .CASDOMUXB(1'b0),
+        .CASDOMUXEN_A(1'b0),
+        .CASDOMUXEN_B(1'b0),
+        .CASDOUTA(\NLW_DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_CASDOUTA_UNCONNECTED [31:0]),
+        .CASDOUTB(\NLW_DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_CASDOUTB_UNCONNECTED [31:0]),
+        .CASDOUTPA(\NLW_DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_CASDOUTPA_UNCONNECTED [3:0]),
+        .CASDOUTPB(\NLW_DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_CASDOUTPB_UNCONNECTED [3:0]),
+        .CASINDBITERR(1'b0),
+        .CASINSBITERR(1'b0),
+        .CASOREGIMUXA(1'b0),
+        .CASOREGIMUXB(1'b0),
+        .CASOREGIMUXEN_A(1'b0),
+        .CASOREGIMUXEN_B(1'b0),
+        .CASOUTDBITERR(\NLW_DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_CASOUTDBITERR_UNCONNECTED ),
+        .CASOUTSBITERR(\NLW_DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_CASOUTSBITERR_UNCONNECTED ),
         .CLKARDCLK(clka),
         .CLKBWRCLK(clka),
-        .DBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_DBITERR_UNCONNECTED ),
-        .DIADI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .DIBDI({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .DIPADIP({1'b0,1'b0,1'b0,1'b0}),
-        .DIPBDIP({1'b0,1'b0,1'b0,1'b0}),
-        .DOADO({\DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_21 ,\DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_22 ,\DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_23 ,douta[20:16],\DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_29 ,\DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_30 ,\DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_31 ,douta[15:11],\DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_37 ,\DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_38 ,\DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_39 ,douta[10:6],\DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_45 ,\DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_46 ,douta[5:0]}),
-        .DOBDO({\DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_53 ,\DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_54 ,\DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_55 ,douta[41:37],\DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_61 ,\DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_62 ,\DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_63 ,douta[36:32],\DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_69 ,\DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_70 ,\DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_71 ,douta[31:27],\DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_77 ,\DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_78 ,douta[26:21]}),
-        .DOPADOP({\DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_85 ,\DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_86 ,\DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_87 ,\DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_88 }),
-        .DOPBDOP({\DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_89 ,\DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_90 ,\DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_91 ,\DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_92 }),
-        .ECCPARITY(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_ECCPARITY_UNCONNECTED [7:0]),
+        .DBITERR(\NLW_DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_DBITERR_UNCONNECTED ),
+        .DINADIN({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .DINBDIN({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .DINPADINP({1'b0,1'b0,1'b0,1'b0}),
+        .DINPBDINP({1'b0,1'b0,1'b0,1'b0}),
+        .DOUTADOUT({\DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_68 ,\DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_69 ,\DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_70 ,douta[20:16],\DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_76 ,\DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_77 ,\DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_78 ,douta[15:11],\DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_84 ,\DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_85 ,\DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_86 ,douta[10:6],\DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_92 ,\DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_93 ,douta[5:0]}),
+        .DOUTBDOUT({\DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_100 ,\DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_101 ,\DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_102 ,douta[41:37],\DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_108 ,\DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_109 ,\DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_110 ,douta[36:32],\DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_116 ,\DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_117 ,\DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_118 ,douta[31:27],\DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_124 ,\DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_125 ,douta[26:21]}),
+        .DOUTPADOUTP({\DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_140 ,\DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_141 ,\DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_142 ,\DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_143 }),
+        .DOUTPBDOUTP({\DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_144 ,\DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_145 ,\DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_146 ,\DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_147 }),
+        .ECCPARITY(\NLW_DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_ECCPARITY_UNCONNECTED [7:0]),
+        .ECCPIPECE(1'b0),
         .ENARDEN(1'b1),
         .ENBWREN(1'b1),
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
-        .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_RDADDRECC_UNCONNECTED [8:0]),
+        .RDADDRECC(\NLW_DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_RDADDRECC_UNCONNECTED [8:0]),
         .REGCEAREGCE(1'b1),
         .REGCEB(1'b1),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
         .RSTREGARSTREG(1'b0),
         .RSTREGB(1'b0),
-        .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_SBITERR_UNCONNECTED ),
+        .SBITERR(\NLW_DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_SBITERR_UNCONNECTED ),
+        .SLEEP(sleep),
         .WEA({1'b0,1'b0,1'b0,1'b0}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
 endmodule
@@ -490,19 +530,23 @@ endmodule
 module rom_shift_blk_mem_gen_top
    (douta,
     clka,
+    sleep,
     addra);
   output [41:0]douta;
   input clka;
+  input sleep;
   input [6:0]addra;
 
   wire [6:0]addra;
   wire clka;
   wire [41:0]douta;
+  wire sleep;
 
   rom_shift_blk_mem_gen_generic_cstr \valid.cstr 
        (.addra(addra),
         .clka(clka),
-        .douta(douta));
+        .douta(douta),
+        .sleep(sleep));
 endmodule
 
 (* C_ADDRA_WIDTH = "7" *) (* C_ADDRB_WIDTH = "7" *) (* C_ALGORITHM = "1" *) 
@@ -512,8 +556,8 @@ endmodule
 (* C_DISABLE_WARN_BHV_COLL = "0" *) (* C_DISABLE_WARN_BHV_RANGE = "0" *) (* C_ELABORATION_DIR = "./" *) 
 (* C_ENABLE_32BIT_ADDRESS = "0" *) (* C_EN_DEEPSLEEP_PIN = "0" *) (* C_EN_ECC_PIPE = "0" *) 
 (* C_EN_RDADDRA_CHG = "0" *) (* C_EN_RDADDRB_CHG = "0" *) (* C_EN_SAFETY_CKT = "0" *) 
-(* C_EN_SHUTDOWN_PIN = "0" *) (* C_EN_SLEEP_PIN = "0" *) (* C_EST_POWER_SUMMARY = "Estimated Power for IP     :     5.596 mW" *) 
-(* C_FAMILY = "virtex7" *) (* C_HAS_AXI_ID = "0" *) (* C_HAS_ENA = "0" *) 
+(* C_EN_SHUTDOWN_PIN = "0" *) (* C_EN_SLEEP_PIN = "0" *) (* C_EST_POWER_SUMMARY = "Estimated Power for IP     :     5.908882 mW" *) 
+(* C_FAMILY = "virtexu" *) (* C_HAS_AXI_ID = "0" *) (* C_HAS_ENA = "0" *) 
 (* C_HAS_ENB = "0" *) (* C_HAS_INJECTERR = "0" *) (* C_HAS_MEM_OUTPUT_REGS_A = "1" *) 
 (* C_HAS_MEM_OUTPUT_REGS_B = "0" *) (* C_HAS_MUX_OUTPUT_REGS_A = "0" *) (* C_HAS_MUX_OUTPUT_REGS_B = "0" *) 
 (* C_HAS_REGCEA = "0" *) (* C_HAS_REGCEB = "0" *) (* C_HAS_RSTA = "0" *) 
@@ -529,7 +573,7 @@ endmodule
 (* C_USE_URAM = "0" *) (* C_WEA_WIDTH = "1" *) (* C_WEB_WIDTH = "1" *) 
 (* C_WRITE_DEPTH_A = "72" *) (* C_WRITE_DEPTH_B = "72" *) (* C_WRITE_MODE_A = "WRITE_FIRST" *) 
 (* C_WRITE_MODE_B = "WRITE_FIRST" *) (* C_WRITE_WIDTH_A = "42" *) (* C_WRITE_WIDTH_B = "42" *) 
-(* C_XDEVICEFAMILY = "virtex7" *) (* ORIG_REF_NAME = "blk_mem_gen_v8_3_5" *) (* downgradeipidentifiedwarnings = "yes" *) 
+(* C_XDEVICEFAMILY = "virtexu" *) (* ORIG_REF_NAME = "blk_mem_gen_v8_3_5" *) (* downgradeipidentifiedwarnings = "yes" *) 
 module rom_shift_blk_mem_gen_v8_3_5
    (clka,
     rsta,
@@ -662,6 +706,7 @@ module rom_shift_blk_mem_gen_v8_3_5
   wire [6:0]addra;
   wire clka;
   wire [41:0]douta;
+  wire sleep;
 
   assign dbiterr = \<const0> ;
   assign doutb[41] = \<const0> ;
@@ -790,26 +835,31 @@ module rom_shift_blk_mem_gen_v8_3_5
   rom_shift_blk_mem_gen_v8_3_5_synth inst_blk_mem_gen
        (.addra(addra),
         .clka(clka),
-        .douta(douta));
+        .douta(douta),
+        .sleep(sleep));
 endmodule
 
 (* ORIG_REF_NAME = "blk_mem_gen_v8_3_5_synth" *) 
 module rom_shift_blk_mem_gen_v8_3_5_synth
    (douta,
     clka,
+    sleep,
     addra);
   output [41:0]douta;
   input clka;
+  input sleep;
   input [6:0]addra;
 
   wire [6:0]addra;
   wire clka;
   wire [41:0]douta;
+  wire sleep;
 
   rom_shift_blk_mem_gen_top \gnbram.gnativebmg.native_blk_mem_gen 
        (.addra(addra),
         .clka(clka),
-        .douta(douta));
+        .douta(douta),
+        .sleep(sleep));
 endmodule
 `ifndef GLBL
 `define GLBL

@@ -5,8 +5,10 @@
 
 # ignore directories
 /.vscode
-/Layer_decoder/modelsim/
+
 *.cache/
 *.runs/
 *.hw/
 *.sim/
+*.ioplanning/
+*.ip_user_files/

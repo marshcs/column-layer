@@ -197,8 +197,8 @@ wire	[1*BLK_SIZE*PCM_ROWN-1:0]	w_memvs_doutb;
 
 mem_v2c_sign inst_mem_v2c_sign (
   .clka		(clk					),    	// input wire clka
-  .wea		(r_decoding_delay[3]	),      // input wire [0 : 0] wea
-  .addra	(r_decode_cnt_delay[3]	),  	// input wire [6 : 0] addra
+  .wea		(r_decoding_delay[2]	),      // input wire [0 : 0] wea
+  .addra	(r_decode_cnt_delay[2]	),  	// input wire [6 : 0] addra
   .dina		(w_cns_o_v2c_sign_bus	),    	// input wire [761 : 0] dina
   .clkb		(clk					),    	// input wire clkb
   .addrb	(r_decode_cnt			),  	// input wire [6 : 0] addrb

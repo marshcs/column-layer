@@ -10,10 +10,10 @@ vmap xpm msim/xpm
 vmap blk_mem_gen_v8_3_5 msim/blk_mem_gen_v8_3_5
 
 vlog -work xil_defaultlib -64 -sv \
-"D:/Xilinx/Vivado/2016.4/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv" \
+"C:/Xilinx/Vivado/2016.4/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv" \
 
 vcom -work xpm -64 -93 \
-"D:/Xilinx/Vivado/2016.4/data/ip/xpm/xpm_VCOMP.vhd" \
+"C:/Xilinx/Vivado/2016.4/data/ip/xpm/xpm_VCOMP.vhd" \
 
 vlog -work blk_mem_gen_v8_3_5 -64 \
 "../../../ipstatic/simulation/blk_mem_gen_v8_3.v" \

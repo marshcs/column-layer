@@ -1,8 +1,8 @@
 	clc
     clearvars
 	load('base_matrix.mat');
-    is_pipeline = 0;
-    num_of_err = 45;
+    is_pipeline = 1;
+    num_of_err = 35;
 
 	base_matrix = base_matrix(:,1:72);
 	PARA = struct();
@@ -20,7 +20,7 @@
     err_frame = 0;
     tot_frame = 0;
 
-    while err_frame < 10
+    while err_frame < 50
     	llr = zeros(blk_size,pcm_coln);
         ran_err = ceil(rand(num_of_err,1)*code_length);
         llr(ran_err) = 1;

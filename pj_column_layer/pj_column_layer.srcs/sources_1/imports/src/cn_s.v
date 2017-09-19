@@ -98,9 +98,6 @@ endgenerate
 
 //----------->> Sign >>-------------------------------------
 reg r_sign_tot;
-reg	r_v2c_sign;
-
-always@(posedge i_clk) r_v2c_sign <= i_v2c[MSG_WIDTH-1];
 
 always@(posedge i_clk)	begin
 	if(~i_rst_n)			r_sign_tot <= 1'd0;
@@ -112,7 +109,7 @@ end
 //----------->> Output assign >>----------------------------
 assign	o_v2c_idx = r_v2c_idx_queue[0];
 assign	o_v2c_abs = {r_v2c_queue[1], r_v2c_queue[0]};
-assign	o_v2c_sign = r_v2c_sign;
+assign	o_v2c_sign = i_v2c[MSG_WIDTH-1];
 assign	o_v2c_sign_tot = r_sign_tot;
 //----------->> Output assign >>----------------------------
 

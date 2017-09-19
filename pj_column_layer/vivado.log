@@ -1,0 +1,119 @@
+#-----------------------------------------------------------
+# Vivado v2016.4 (64-bit)
+# SW Build 1756540 on Mon Jan 23 19:11:23 MST 2017
+# IP Build 1755317 on Mon Jan 23 20:30:07 MST 2017
+# Start of session at: Mon Sep 18 14:44:16 2017
+# Process ID: 10064
+# Current directory: E:/CS/column-layer/pj_column_layer
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent9244 E:\CS\column-layer\pj_column_layer\pj_column_layer.xpr
+# Log file: E:/CS/column-layer/pj_column_layer/vivado.log
+# Journal file: E:/CS/column-layer/pj_column_layer\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project E:/CS/column-layer/pj_column_layer/pj_column_layer.xpr
+INFO: [Project 1-313] Project file moved from 'D:/cs/column-layer/pj_column_layer' since last save.
+Scanning sources...
+Finished scanning sources
+WARNING: [Project 1-509] GeneratedRun file for 'synth_1' not found
+WARNING: [Project 1-509] GeneratedRun file for 'rom_shift_synth_1' not found
+WARNING: [Project 1-509] GeneratedRun file for 'mem_app_synth_1' not found
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2016.4/data/ip'.
+launch_runs synth_1 -jobs 12
+INFO: [Vivado 12-4149] The synthesis checkpoint for IP 'E:/CS/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/ip/llr_mem/llr_mem.xci' is already up-to-date
+INFO: [Vivado 12-4149] The synthesis checkpoint for IP 'E:/CS/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/ip/mem_v2c_sign/mem_v2c_sign.xci' is already up-to-date
+INFO: [HDL 9-2216] Analyzing Verilog file "E:/CS/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/imports/src/barrel_shifter_pblk.v" into library work [E:/CS/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/imports/src/barrel_shifter_pblk.v:1]
+INFO: [HDL 9-2216] Analyzing Verilog file "E:/CS/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/imports/src/cn_r.v" into library work [E:/CS/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/imports/src/cn_r.v:1]
+INFO: [HDL 9-2216] Analyzing Verilog file "E:/CS/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/imports/src/cn_s.v" into library work [E:/CS/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/imports/src/cn_s.v:1]
+INFO: [HDL 9-2216] Analyzing Verilog file "E:/CS/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/imports/src/decoder.v" into library work [E:/CS/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/imports/src/decoder.v:1]
+INFO: [HDL 9-2216] Analyzing Verilog file "E:/CS/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/imports/src/min.v" into library work [E:/CS/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/imports/src/min.v:1]
+INFO: [HDL 9-2216] Analyzing Verilog file "E:/CS/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/imports/src/parity_check.v" into library work [E:/CS/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/imports/src/parity_check.v:1]
+INFO: [HDL 9-2216] Analyzing Verilog file "E:/CS/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/imports/src/vn.v" into library work [E:/CS/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/imports/src/vn.v:1]
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'rom_shift'...
+[Mon Sep 18 14:45:35 2017] Launched rom_shift_synth_1, mem_app_synth_1...
+Run output will be captured here:
+rom_shift_synth_1: E:/CS/column-layer/pj_column_layer/pj_column_layer.runs/rom_shift_synth_1/runme.log
+mem_app_synth_1: E:/CS/column-layer/pj_column_layer/pj_column_layer.runs/mem_app_synth_1/runme.log
+[Mon Sep 18 14:45:35 2017] Launched synth_1...
+Run output will be captured here: E:/CS/column-layer/pj_column_layer/pj_column_layer.runs/synth_1/runme.log
+open_run synth_1 -name synth_1
+Design is defaulting to impl run constrset: constrs_1
+Design is defaulting to synth run part: xc7vx485tffg1157-1
+INFO: [Project 1-454] Reading design checkpoint 'e:/CS/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/ip/llr_mem/llr_mem.dcp' for cell 'inst_llr_mem'
+INFO: [Project 1-454] Reading design checkpoint 'e:/CS/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/ip/mem_v2c_sign/mem_v2c_sign.dcp' for cell 'inst_mem_v2c_sign'
+INFO: [Project 1-454] Reading design checkpoint 'E:/CS/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/ip/rom_shift/rom_shift.dcp' for cell 'inst_rom_shift'
+INFO: [Project 1-454] Reading design checkpoint 'E:/CS/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/ip/mem_app/mem_app.dcp' for cell 'inst_parity_check/inst_mem_app'
+INFO: [Netlist 29-17] Analyzing 7254 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 1 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2016.4
+INFO: [Device 21-403] Loading part xc7vx485tffg1157-1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Project 1-538] Using original IP XDC constraints instead of the XDC constraints in dcp 'e:/CS/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/ip/llr_mem/llr_mem.dcp'
+INFO: [Project 1-538] Using original IP XDC constraints instead of the XDC constraints in dcp 'e:/CS/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/ip/mem_v2c_sign/mem_v2c_sign.dcp'
+INFO: [Project 1-538] Using original IP XDC constraints instead of the XDC constraints in dcp 'E:/CS/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/ip/rom_shift/rom_shift.dcp'
+INFO: [Project 1-538] Using original IP XDC constraints instead of the XDC constraints in dcp 'E:/CS/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/ip/mem_app/mem_app.dcp'
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+open_run: Time (s): cpu = 00:00:48 ; elapsed = 00:00:42 . Memory (MB): peak = 1737.402 ; gain = 801.488
+create_clock -period 16.000 -name clk -waveform {0.000 8.000} [get_ports clk]
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -name timing_1
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 2 CPUs
+report_timing_summary: Time (s): cpu = 00:01:11 ; elapsed = 00:00:41 . Memory (MB): peak = 2684.199 ; gain = 381.574
+file mkdir E:/CS/column-layer/pj_column_layer/pj_column_layer.srcs/constrs_1/new
+close [ open E:/CS/column-layer/pj_column_layer/pj_column_layer.srcs/constrs_1/new/const.xdc w ]
+add_files -fileset constrs_1 E:/CS/column-layer/pj_column_layer/pj_column_layer.srcs/constrs_1/new/const.xdc
+set_property target_constrs_file E:/CS/column-layer/pj_column_layer/pj_column_layer.srcs/constrs_1/new/const.xdc [current_fileset -constrset]
+save_constraints -force
+reset_run synth_1
+launch_runs impl_1 -jobs 12
+INFO: [Vivado 12-4149] The synthesis checkpoint for IP 'E:/CS/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/ip/llr_mem/llr_mem.xci' is already up-to-date
+INFO: [Vivado 12-4149] The synthesis checkpoint for IP 'E:/CS/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/ip/mem_v2c_sign/mem_v2c_sign.xci' is already up-to-date
+WARNING: [Project 1-478] Design 'synth_1' is stale and will not be used when launching 'impl_1'
+[Mon Sep 18 15:09:35 2017] Launched synth_1...
+Run output will be captured here: E:/CS/column-layer/pj_column_layer/pj_column_layer.runs/synth_1/runme.log
+[Mon Sep 18 15:09:35 2017] Launched impl_1...
+Run output will be captured here: E:/CS/column-layer/pj_column_layer/pj_column_layer.runs/impl_1/runme.log
+reset_run impl_1
+reset_run synth_1
+launch_runs synth_1 -jobs 12
+INFO: [Vivado 12-4149] The synthesis checkpoint for IP 'E:/CS/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/ip/llr_mem/llr_mem.xci' is already up-to-date
+INFO: [Vivado 12-4149] The synthesis checkpoint for IP 'E:/CS/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/ip/mem_v2c_sign/mem_v2c_sign.xci' is already up-to-date
+INFO: [HDL 9-2216] Analyzing Verilog file "E:/CS/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/imports/src/cn_s.v" into library work [E:/CS/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/imports/src/cn_s.v:1]
+[Mon Sep 18 15:50:21 2017] Launched synth_1...
+Run output will be captured here: E:/CS/column-layer/pj_column_layer/pj_column_layer.runs/synth_1/runme.log
+refresh_design
+INFO: [Project 1-454] Reading design checkpoint 'e:/CS/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/ip/llr_mem/llr_mem.dcp' for cell 'inst_llr_mem'
+INFO: [Project 1-454] Reading design checkpoint 'e:/CS/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/ip/mem_v2c_sign/mem_v2c_sign.dcp' for cell 'inst_mem_v2c_sign'
+INFO: [Project 1-454] Reading design checkpoint 'E:/CS/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/ip/rom_shift/rom_shift.dcp' for cell 'inst_rom_shift'
+INFO: [Project 1-454] Reading design checkpoint 'E:/CS/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/ip/mem_app/mem_app.dcp' for cell 'inst_parity_check/inst_mem_app'
+INFO: [Netlist 29-17] Analyzing 7254 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 1 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2016.4
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Parsing XDC File [E:/CS/column-layer/pj_column_layer/pj_column_layer.srcs/constrs_1/new/const.xdc]
+Finished Parsing XDC File [E:/CS/column-layer/pj_column_layer/pj_column_layer.srcs/constrs_1/new/const.xdc]
+INFO: [Project 1-538] Using original IP XDC constraints instead of the XDC constraints in dcp 'e:/CS/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/ip/llr_mem/llr_mem.dcp'
+INFO: [Project 1-538] Using original IP XDC constraints instead of the XDC constraints in dcp 'e:/CS/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/ip/mem_v2c_sign/mem_v2c_sign.dcp'
+INFO: [Project 1-538] Using original IP XDC constraints instead of the XDC constraints in dcp 'E:/CS/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/ip/rom_shift/rom_shift.dcp'
+INFO: [Project 1-538] Using original IP XDC constraints instead of the XDC constraints in dcp 'E:/CS/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/ip/mem_app/mem_app.dcp'
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+refresh_design: Time (s): cpu = 00:00:40 ; elapsed = 00:00:35 . Memory (MB): peak = 3120.293 ; gain = 238.676
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -name timing_1
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 2 CPUs
+report_timing_summary: Time (s): cpu = 00:01:03 ; elapsed = 00:00:38 . Memory (MB): peak = 3120.293 ; gain = 0.000
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -name timing_2
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 2 CPUs
+report_timing_summary: Time (s): cpu = 00:00:09 ; elapsed = 00:00:07 . Memory (MB): peak = 3120.293 ; gain = 0.000
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -name timing_2
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 2 CPUs
+report_timing_summary: Time (s): cpu = 00:00:56 ; elapsed = 00:00:34 . Memory (MB): peak = 3120.293 ; gain = 0.000

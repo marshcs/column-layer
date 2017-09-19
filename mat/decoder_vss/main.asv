@@ -2,7 +2,7 @@
     clearvars
 	load('base_matrix.mat');
     is_pipeline = 0;
-    num_of_err = 45;
+    num_of_err = ;
 
 	base_matrix = base_matrix(:,1:72);
 	PARA = struct();

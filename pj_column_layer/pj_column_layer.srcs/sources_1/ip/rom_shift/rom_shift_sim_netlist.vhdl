@@ -1,14 +1,14 @@
 -- Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2016.4 (win64) Build 1756540 Mon Jan 23 19:11:23 MST 2017
--- Date        : Wed Sep 06 11:16:51 2017
--- Host        : DESKTOP-GADFO2S running 64-bit major release  (build 9200)
+-- Date        : Mon Sep 18 16:51:10 2017
+-- Host        : DESKTOP-PDSMUE7 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
---               D:/cs/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/ip/rom_shift/rom_shift_sim_netlist.vhdl
+--               E:/CS/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/ip/rom_shift/rom_shift_sim_netlist.vhdl
 -- Design      : rom_shift
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
--- Device      : xc7vx485tffg1157-1
+-- Device      : xcvu440-flga2892-2-e
 -- --------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -18,6 +18,7 @@ entity rom_shift_blk_mem_gen_prim_wrapper_init is
   port (
     douta : out STD_LOGIC_VECTOR ( 41 downto 0 );
     clka : in STD_LOGIC;
+    sleep : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 6 downto 0 )
   );
   attribute ORIG_REF_NAME : string;
@@ -25,53 +26,61 @@ entity rom_shift_blk_mem_gen_prim_wrapper_init is
 end rom_shift_blk_mem_gen_prim_wrapper_init;
 
 architecture STRUCTURE of rom_shift_blk_mem_gen_prim_wrapper_init is
-  signal \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_21\ : STD_LOGIC;
-  signal \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_22\ : STD_LOGIC;
-  signal \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_23\ : STD_LOGIC;
-  signal \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_29\ : STD_LOGIC;
-  signal \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_30\ : STD_LOGIC;
-  signal \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_31\ : STD_LOGIC;
-  signal \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_37\ : STD_LOGIC;
-  signal \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_38\ : STD_LOGIC;
-  signal \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_39\ : STD_LOGIC;
-  signal \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_45\ : STD_LOGIC;
-  signal \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_46\ : STD_LOGIC;
-  signal \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_53\ : STD_LOGIC;
-  signal \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_54\ : STD_LOGIC;
-  signal \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_55\ : STD_LOGIC;
-  signal \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_61\ : STD_LOGIC;
-  signal \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_62\ : STD_LOGIC;
-  signal \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_63\ : STD_LOGIC;
-  signal \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_69\ : STD_LOGIC;
-  signal \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_70\ : STD_LOGIC;
-  signal \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_71\ : STD_LOGIC;
-  signal \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_77\ : STD_LOGIC;
-  signal \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_78\ : STD_LOGIC;
-  signal \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_85\ : STD_LOGIC;
-  signal \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_86\ : STD_LOGIC;
-  signal \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_87\ : STD_LOGIC;
-  signal \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_88\ : STD_LOGIC;
-  signal \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_89\ : STD_LOGIC;
-  signal \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_90\ : STD_LOGIC;
-  signal \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_91\ : STD_LOGIC;
-  signal \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_92\ : STD_LOGIC;
-  signal \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_CASCADEOUTA_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_CASCADEOUTB_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_DBITERR_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_SBITERR_UNCONNECTED\ : STD_LOGIC;
-  signal \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_ECCPARITY_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_RDADDRECC_UNCONNECTED\ : STD_LOGIC_VECTOR ( 8 downto 0 );
-  attribute CLOCK_DOMAINS : string;
-  attribute CLOCK_DOMAINS of \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram\ : label is "COMMON";
+  signal \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_100\ : STD_LOGIC;
+  signal \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_101\ : STD_LOGIC;
+  signal \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_102\ : STD_LOGIC;
+  signal \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_108\ : STD_LOGIC;
+  signal \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_109\ : STD_LOGIC;
+  signal \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_110\ : STD_LOGIC;
+  signal \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_116\ : STD_LOGIC;
+  signal \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_117\ : STD_LOGIC;
+  signal \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_118\ : STD_LOGIC;
+  signal \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_124\ : STD_LOGIC;
+  signal \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_125\ : STD_LOGIC;
+  signal \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_140\ : STD_LOGIC;
+  signal \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_141\ : STD_LOGIC;
+  signal \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_142\ : STD_LOGIC;
+  signal \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_143\ : STD_LOGIC;
+  signal \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_144\ : STD_LOGIC;
+  signal \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_145\ : STD_LOGIC;
+  signal \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_146\ : STD_LOGIC;
+  signal \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_147\ : STD_LOGIC;
+  signal \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_68\ : STD_LOGIC;
+  signal \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_69\ : STD_LOGIC;
+  signal \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_70\ : STD_LOGIC;
+  signal \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_76\ : STD_LOGIC;
+  signal \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_77\ : STD_LOGIC;
+  signal \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_78\ : STD_LOGIC;
+  signal \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_84\ : STD_LOGIC;
+  signal \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_85\ : STD_LOGIC;
+  signal \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_86\ : STD_LOGIC;
+  signal \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_92\ : STD_LOGIC;
+  signal \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_93\ : STD_LOGIC;
+  signal \NLW_DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_CASOUTDBITERR_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_CASOUTSBITERR_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_DBITERR_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_SBITERR_UNCONNECTED\ : STD_LOGIC;
+  signal \NLW_DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_CASDOUTA_UNCONNECTED\ : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal \NLW_DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_CASDOUTB_UNCONNECTED\ : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal \NLW_DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_CASDOUTPA_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal \NLW_DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_CASDOUTPB_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal \NLW_DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_ECCPARITY_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal \NLW_DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_RDADDRECC_UNCONNECTED\ : STD_LOGIC_VECTOR ( 8 downto 0 );
   attribute box_type : string;
-  attribute box_type of \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram\ : label is "PRIMITIVE";
+  attribute box_type of \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram\ : label is "PRIMITIVE";
 begin
-\DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram\: unisim.vcomponents.RAMB36E1
+\DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram\: unisim.vcomponents.RAMB36E2
     generic map(
+      CASCADE_ORDER_A => "NONE",
+      CASCADE_ORDER_B => "NONE",
+      CLOCK_DOMAINS => "COMMON",
       DOA_REG => 1,
       DOB_REG => 1,
-      EN_ECC_READ => false,
-      EN_ECC_WRITE => false,
+      ENADDRENA => "FALSE",
+      ENADDRENB => "FALSE",
+      EN_ECC_PIPE => "FALSE",
+      EN_ECC_READ => "FALSE",
+      EN_ECC_WRITE => "FALSE",
       INITP_00 => X"0000000000000000000000000000000000000000000000000000000000000000",
       INITP_01 => X"0000000000000000000000000000000000000000000000000000000000000000",
       INITP_02 => X"0000000000000000000000000000000000000000000000000000000000000000",
@@ -227,16 +236,14 @@ begin
       IS_RSTRAMB_INVERTED => '0',
       IS_RSTREGARSTREG_INVERTED => '0',
       IS_RSTREGB_INVERTED => '0',
-      RAM_EXTENSION_A => "NONE",
-      RAM_EXTENSION_B => "NONE",
-      RAM_MODE => "TDP",
-      RDADDR_COLLISION_HWCONFIG => "DELAYED_WRITE",
+      RDADDRCHANGEA => "FALSE",
+      RDADDRCHANGEB => "FALSE",
       READ_WIDTH_A => 36,
       READ_WIDTH_B => 36,
       RSTREG_PRIORITY_A => "REGCE",
       RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
-      SIM_DEVICE => "7SERIES",
+      SLEEP_ASYNC => "FALSE",
       SRVAL_A => X"000000000",
       SRVAL_B => X"000000000",
       WRITE_MODE_A => "WRITE_FIRST",
@@ -245,74 +252,96 @@ begin
       WRITE_WIDTH_B => 36
     )
         port map (
-      ADDRARDADDR(15 downto 13) => B"100",
+      ADDRARDADDR(14 downto 13) => B"00",
       ADDRARDADDR(12 downto 6) => addra(6 downto 0),
-      ADDRARDADDR(5 downto 0) => B"011111",
-      ADDRBWRADDR(15 downto 13) => B"100",
+      ADDRARDADDR(5 downto 0) => B"000000",
+      ADDRBWRADDR(14 downto 13) => B"00",
       ADDRBWRADDR(12 downto 6) => addra(6 downto 0),
-      ADDRBWRADDR(5 downto 0) => B"111111",
-      CASCADEINA => '0',
-      CASCADEINB => '0',
-      CASCADEOUTA => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_CASCADEOUTA_UNCONNECTED\,
-      CASCADEOUTB => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_CASCADEOUTB_UNCONNECTED\,
+      ADDRBWRADDR(5 downto 0) => B"100000",
+      ADDRENA => '0',
+      ADDRENB => '0',
+      CASDIMUXA => '0',
+      CASDIMUXB => '0',
+      CASDINA(31 downto 0) => B"00000000000000000000000000000000",
+      CASDINB(31 downto 0) => B"00000000000000000000000000000000",
+      CASDINPA(3 downto 0) => B"0000",
+      CASDINPB(3 downto 0) => B"0000",
+      CASDOMUXA => '0',
+      CASDOMUXB => '0',
+      CASDOMUXEN_A => '0',
+      CASDOMUXEN_B => '0',
+      CASDOUTA(31 downto 0) => \NLW_DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_CASDOUTA_UNCONNECTED\(31 downto 0),
+      CASDOUTB(31 downto 0) => \NLW_DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_CASDOUTB_UNCONNECTED\(31 downto 0),
+      CASDOUTPA(3 downto 0) => \NLW_DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_CASDOUTPA_UNCONNECTED\(3 downto 0),
+      CASDOUTPB(3 downto 0) => \NLW_DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_CASDOUTPB_UNCONNECTED\(3 downto 0),
+      CASINDBITERR => '0',
+      CASINSBITERR => '0',
+      CASOREGIMUXA => '0',
+      CASOREGIMUXB => '0',
+      CASOREGIMUXEN_A => '0',
+      CASOREGIMUXEN_B => '0',
+      CASOUTDBITERR => \NLW_DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_CASOUTDBITERR_UNCONNECTED\,
+      CASOUTSBITERR => \NLW_DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_CASOUTSBITERR_UNCONNECTED\,
       CLKARDCLK => clka,
       CLKBWRCLK => clka,
-      DBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_DBITERR_UNCONNECTED\,
-      DIADI(31 downto 0) => B"00000000000000000000000000000000",
-      DIBDI(31 downto 0) => B"00000000000000000000000000000000",
-      DIPADIP(3 downto 0) => B"0000",
-      DIPBDIP(3 downto 0) => B"0000",
-      DOADO(31) => \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_21\,
-      DOADO(30) => \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_22\,
-      DOADO(29) => \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_23\,
-      DOADO(28 downto 24) => douta(20 downto 16),
-      DOADO(23) => \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_29\,
-      DOADO(22) => \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_30\,
-      DOADO(21) => \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_31\,
-      DOADO(20 downto 16) => douta(15 downto 11),
-      DOADO(15) => \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_37\,
-      DOADO(14) => \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_38\,
-      DOADO(13) => \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_39\,
-      DOADO(12 downto 8) => douta(10 downto 6),
-      DOADO(7) => \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_45\,
-      DOADO(6) => \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_46\,
-      DOADO(5 downto 0) => douta(5 downto 0),
-      DOBDO(31) => \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_53\,
-      DOBDO(30) => \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_54\,
-      DOBDO(29) => \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_55\,
-      DOBDO(28 downto 24) => douta(41 downto 37),
-      DOBDO(23) => \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_61\,
-      DOBDO(22) => \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_62\,
-      DOBDO(21) => \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_63\,
-      DOBDO(20 downto 16) => douta(36 downto 32),
-      DOBDO(15) => \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_69\,
-      DOBDO(14) => \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_70\,
-      DOBDO(13) => \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_71\,
-      DOBDO(12 downto 8) => douta(31 downto 27),
-      DOBDO(7) => \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_77\,
-      DOBDO(6) => \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_78\,
-      DOBDO(5 downto 0) => douta(26 downto 21),
-      DOPADOP(3) => \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_85\,
-      DOPADOP(2) => \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_86\,
-      DOPADOP(1) => \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_87\,
-      DOPADOP(0) => \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_88\,
-      DOPBDOP(3) => \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_89\,
-      DOPBDOP(2) => \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_90\,
-      DOPBDOP(1) => \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_91\,
-      DOPBDOP(0) => \DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_92\,
-      ECCPARITY(7 downto 0) => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_ECCPARITY_UNCONNECTED\(7 downto 0),
+      DBITERR => \NLW_DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_DBITERR_UNCONNECTED\,
+      DINADIN(31 downto 0) => B"00000000000000000000000000000000",
+      DINBDIN(31 downto 0) => B"00000000000000000000000000000000",
+      DINPADINP(3 downto 0) => B"0000",
+      DINPBDINP(3 downto 0) => B"0000",
+      DOUTADOUT(31) => \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_68\,
+      DOUTADOUT(30) => \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_69\,
+      DOUTADOUT(29) => \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_70\,
+      DOUTADOUT(28 downto 24) => douta(20 downto 16),
+      DOUTADOUT(23) => \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_76\,
+      DOUTADOUT(22) => \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_77\,
+      DOUTADOUT(21) => \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_78\,
+      DOUTADOUT(20 downto 16) => douta(15 downto 11),
+      DOUTADOUT(15) => \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_84\,
+      DOUTADOUT(14) => \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_85\,
+      DOUTADOUT(13) => \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_86\,
+      DOUTADOUT(12 downto 8) => douta(10 downto 6),
+      DOUTADOUT(7) => \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_92\,
+      DOUTADOUT(6) => \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_93\,
+      DOUTADOUT(5 downto 0) => douta(5 downto 0),
+      DOUTBDOUT(31) => \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_100\,
+      DOUTBDOUT(30) => \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_101\,
+      DOUTBDOUT(29) => \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_102\,
+      DOUTBDOUT(28 downto 24) => douta(41 downto 37),
+      DOUTBDOUT(23) => \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_108\,
+      DOUTBDOUT(22) => \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_109\,
+      DOUTBDOUT(21) => \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_110\,
+      DOUTBDOUT(20 downto 16) => douta(36 downto 32),
+      DOUTBDOUT(15) => \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_116\,
+      DOUTBDOUT(14) => \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_117\,
+      DOUTBDOUT(13) => \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_118\,
+      DOUTBDOUT(12 downto 8) => douta(31 downto 27),
+      DOUTBDOUT(7) => \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_124\,
+      DOUTBDOUT(6) => \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_125\,
+      DOUTBDOUT(5 downto 0) => douta(26 downto 21),
+      DOUTPADOUTP(3) => \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_140\,
+      DOUTPADOUTP(2) => \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_141\,
+      DOUTPADOUTP(1) => \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_142\,
+      DOUTPADOUTP(0) => \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_143\,
+      DOUTPBDOUTP(3) => \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_144\,
+      DOUTPBDOUTP(2) => \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_145\,
+      DOUTPBDOUTP(1) => \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_146\,
+      DOUTPBDOUTP(0) => \DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_n_147\,
+      ECCPARITY(7 downto 0) => \NLW_DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_ECCPARITY_UNCONNECTED\(7 downto 0),
+      ECCPIPECE => '0',
       ENARDEN => '1',
       ENBWREN => '1',
       INJECTDBITERR => '0',
       INJECTSBITERR => '0',
-      RDADDRECC(8 downto 0) => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_RDADDRECC_UNCONNECTED\(8 downto 0),
+      RDADDRECC(8 downto 0) => \NLW_DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_RDADDRECC_UNCONNECTED\(8 downto 0),
       REGCEAREGCE => '1',
       REGCEB => '1',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
       RSTREGARSTREG => '0',
       RSTREGB => '0',
-      SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_SBITERR_UNCONNECTED\,
+      SBITERR => \NLW_DEVICE_8SERIES.NO_BMM_INFO.SP.WIDE_PRIM36.ram_SBITERR_UNCONNECTED\,
+      SLEEP => sleep,
       WEA(3 downto 0) => B"0000",
       WEBWE(7 downto 0) => B"00000000"
     );
@@ -325,6 +354,7 @@ entity rom_shift_blk_mem_gen_prim_width is
   port (
     douta : out STD_LOGIC_VECTOR ( 41 downto 0 );
     clka : in STD_LOGIC;
+    sleep : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 6 downto 0 )
   );
   attribute ORIG_REF_NAME : string;
@@ -337,7 +367,8 @@ begin
      port map (
       addra(6 downto 0) => addra(6 downto 0),
       clka => clka,
-      douta(41 downto 0) => douta(41 downto 0)
+      douta(41 downto 0) => douta(41 downto 0),
+      sleep => sleep
     );
 end STRUCTURE;
 library IEEE;
@@ -348,6 +379,7 @@ entity rom_shift_blk_mem_gen_generic_cstr is
   port (
     douta : out STD_LOGIC_VECTOR ( 41 downto 0 );
     clka : in STD_LOGIC;
+    sleep : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 6 downto 0 )
   );
   attribute ORIG_REF_NAME : string;
@@ -360,7 +392,8 @@ begin
      port map (
       addra(6 downto 0) => addra(6 downto 0),
       clka => clka,
-      douta(41 downto 0) => douta(41 downto 0)
+      douta(41 downto 0) => douta(41 downto 0),
+      sleep => sleep
     );
 end STRUCTURE;
 library IEEE;
@@ -371,6 +404,7 @@ entity rom_shift_blk_mem_gen_top is
   port (
     douta : out STD_LOGIC_VECTOR ( 41 downto 0 );
     clka : in STD_LOGIC;
+    sleep : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 6 downto 0 )
   );
   attribute ORIG_REF_NAME : string;
@@ -383,7 +417,8 @@ begin
      port map (
       addra(6 downto 0) => addra(6 downto 0),
       clka => clka,
-      douta(41 downto 0) => douta(41 downto 0)
+      douta(41 downto 0) => douta(41 downto 0),
+      sleep => sleep
     );
 end STRUCTURE;
 library IEEE;
@@ -394,6 +429,7 @@ entity rom_shift_blk_mem_gen_v8_3_5_synth is
   port (
     douta : out STD_LOGIC_VECTOR ( 41 downto 0 );
     clka : in STD_LOGIC;
+    sleep : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 6 downto 0 )
   );
   attribute ORIG_REF_NAME : string;
@@ -406,7 +442,8 @@ begin
      port map (
       addra(6 downto 0) => addra(6 downto 0),
       clka => clka,
-      douta(41 downto 0) => douta(41 downto 0)
+      douta(41 downto 0) => douta(41 downto 0),
+      sleep => sleep
     );
 end STRUCTURE;
 library IEEE;
@@ -526,9 +563,9 @@ entity rom_shift_blk_mem_gen_v8_3_5 is
   attribute C_EN_SLEEP_PIN : integer;
   attribute C_EN_SLEEP_PIN of rom_shift_blk_mem_gen_v8_3_5 : entity is 0;
   attribute C_EST_POWER_SUMMARY : string;
-  attribute C_EST_POWER_SUMMARY of rom_shift_blk_mem_gen_v8_3_5 : entity is "Estimated Power for IP     :     5.596 mW";
+  attribute C_EST_POWER_SUMMARY of rom_shift_blk_mem_gen_v8_3_5 : entity is "Estimated Power for IP     :     5.908882 mW";
   attribute C_FAMILY : string;
-  attribute C_FAMILY of rom_shift_blk_mem_gen_v8_3_5 : entity is "virtex7";
+  attribute C_FAMILY of rom_shift_blk_mem_gen_v8_3_5 : entity is "virtexu";
   attribute C_HAS_AXI_ID : integer;
   attribute C_HAS_AXI_ID of rom_shift_blk_mem_gen_v8_3_5 : entity is 0;
   attribute C_HAS_ENA : integer;
@@ -624,7 +661,7 @@ entity rom_shift_blk_mem_gen_v8_3_5 is
   attribute C_WRITE_WIDTH_B : integer;
   attribute C_WRITE_WIDTH_B of rom_shift_blk_mem_gen_v8_3_5 : entity is 42;
   attribute C_XDEVICEFAMILY : string;
-  attribute C_XDEVICEFAMILY of rom_shift_blk_mem_gen_v8_3_5 : entity is "virtex7";
+  attribute C_XDEVICEFAMILY of rom_shift_blk_mem_gen_v8_3_5 : entity is "virtexu";
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of rom_shift_blk_mem_gen_v8_3_5 : entity is "blk_mem_gen_v8_3_5";
   attribute downgradeipidentifiedwarnings : string;
@@ -764,7 +801,8 @@ inst_blk_mem_gen: entity work.rom_shift_blk_mem_gen_v8_3_5_synth
      port map (
       addra(6 downto 0) => addra(6 downto 0),
       clka => clka,
-      douta(41 downto 0) => douta(41 downto 0)
+      douta(41 downto 0) => douta(41 downto 0),
+      sleep => sleep
     );
 end STRUCTURE;
 library IEEE;
@@ -855,9 +893,9 @@ architecture STRUCTURE of rom_shift is
   attribute C_EN_SLEEP_PIN : integer;
   attribute C_EN_SLEEP_PIN of U0 : label is 0;
   attribute C_EST_POWER_SUMMARY : string;
-  attribute C_EST_POWER_SUMMARY of U0 : label is "Estimated Power for IP     :     5.596 mW";
+  attribute C_EST_POWER_SUMMARY of U0 : label is "Estimated Power for IP     :     5.908882 mW";
   attribute C_FAMILY : string;
-  attribute C_FAMILY of U0 : label is "virtex7";
+  attribute C_FAMILY of U0 : label is "virtexu";
   attribute C_HAS_AXI_ID : integer;
   attribute C_HAS_AXI_ID of U0 : label is 0;
   attribute C_HAS_ENA : integer;
@@ -953,7 +991,7 @@ architecture STRUCTURE of rom_shift is
   attribute C_WRITE_WIDTH_B : integer;
   attribute C_WRITE_WIDTH_B of U0 : label is 42;
   attribute C_XDEVICEFAMILY : string;
-  attribute C_XDEVICEFAMILY of U0 : label is "virtex7";
+  attribute C_XDEVICEFAMILY of U0 : label is "virtexu";
   attribute downgradeipidentifiedwarnings of U0 : label is "yes";
 begin
 U0: entity work.rom_shift_blk_mem_gen_v8_3_5

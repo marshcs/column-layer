@@ -1,13 +1,13 @@
 -- Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2016.4 (win64) Build 1756540 Mon Jan 23 19:11:23 MST 2017
--- Date        : Wed Sep 06 15:44:15 2017
--- Host        : DESKTOP-GADFO2S running 64-bit major release  (build 9200)
+-- Date        : Mon Sep 18 17:30:20 2017
+-- Host        : DESKTOP-PDSMUE7 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub
---               d:/cs/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/ip/mem_app/mem_app_stub.vhdl
+--               E:/CS/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/ip/mem_app/mem_app_stub.vhdl
 -- Design      : mem_app
 -- Purpose     : Stub declaration of top-level module interface
--- Device      : xc7vx485tffg1157-1
+-- Device      : xcvu440-flga2892-2-e
 -- --------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
