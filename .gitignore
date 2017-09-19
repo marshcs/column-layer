@@ -10,3 +10,6 @@
 *.runs/
 *.hw/
 *.sim/
+*.ioplanning/
+*.ip_user_files/
+*.srcs/
