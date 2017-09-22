@@ -4,9 +4,9 @@
     % parameter
 	load('base_matrix.mat');
     is_pipeline     = 1;
-    num_of_err      = 35;
+    num_of_err      = 30;
     max_err_frame   = 20;
-    is_one_frame    = 0;
+    is_one_frame    = 1;
     case_noice      = 1;            % case: 0--load;    1--random noice;   2--custom noice
 
 	base_matrix = base_matrix(:,1:72);
@@ -16,7 +16,7 @@
 	PARA.pcm_size	= [6,72];
 	PARA.blk_size	= 127;
 	PARA.min_num	= 3;
-	PARA.strength	= 4;
+	PARA.strength	= 8;
 
 	blk_size = PARA.blk_size;
     pcm_coln = 72;

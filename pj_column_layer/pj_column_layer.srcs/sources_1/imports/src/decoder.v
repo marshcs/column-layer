@@ -193,7 +193,7 @@ llr_mem inst_llr_mem 	(
 		- width: BLK_SIZE * PCM_ROWN
 		- depth: PCM_COLN
 	*/
-wire	[1*BLK_SIZE*PCM_ROWN-1:0]	w_memvs_doutb;
+wire	[1*BLK_SIZE*PCM_ROWN-1:0]	w_mem_v2c_sign_dout;
 
 mem_v2c_sign inst_mem_v2c_sign (
   .clka		(clk					),    	// input wire clka
@@ -202,7 +202,7 @@ mem_v2c_sign inst_mem_v2c_sign (
   .dina		(w_cns_o_v2c_sign_bus	),    	// input wire [761 : 0] dina
   .clkb		(clk					),    	// input wire clkb
   .addrb	(r_decode_cnt			),  	// input wire [6 : 0] addrb
-  .doutb	(w_memvs_doutb			)  		// output wire [761 : 0] doutb
+  .doutb	(w_mem_v2c_sign_dout	)  		// output wire [761 : 0] doutb
 );
 // -------------------------v V2C sign memory v-------------------
 
@@ -236,7 +236,7 @@ generate
 			assign	w_cnr_i_v2c_abs[0] = w_cns_o_v2c_abs_bus[0][ABS_WID*(i*BLK_SIZE+j+1)-1:ABS_WID*(i*BLK_SIZE+j)];
 			assign	w_cnr_i_v2c_abs[1] = w_cns_o_v2c_abs_bus[1][ABS_WID*(i*BLK_SIZE+j+1)-1:ABS_WID*(i*BLK_SIZE+j)];
 			assign	w_cnr_i_idx_0	   = w_cns_o_v2c_idx_bus[COL_CNT_WID*(i*BLK_SIZE+j+1)-1: COL_CNT_WID*(i*BLK_SIZE+j)];
-			assign	w_cnr_i_v2c_sign   = w_memvs_doutb[BLK_SIZE*i+j];
+			assign	w_cnr_i_v2c_sign   = w_mem_v2c_sign_dout[BLK_SIZE*i+j];
 			assign	w_cnr_i_v2c_sign_tot = w_cns_o_v2c_sign_tot_bus[i*BLK_SIZE+j];
 			
 			cn_r #(
@@ -326,8 +326,6 @@ generate
 
 	end
 endgenerate
-
-
 // -------------------------v vn v ---------------------------
 
 // -------------------------v reverse barrel shifter v----------------
@@ -361,6 +359,11 @@ endgenerate
 
 // -------------------------v cn-s v----------------------------------
 wire		[MSG_WIDTH-1:0]						w_cns_i_v2c	[0:PCM_ROWN-1][0:BLK_SIZE-1];
+reg			[1*BLK_SIZE*PCM_ROWN-1:0]			r_mem_v2c_sign_dout_delay1;
+reg			[1*BLK_SIZE*PCM_ROWN-1:0]			r_mem_v2c_sign_dout_delay2;
+always@(posedge clk)	r_mem_v2c_sign_dout_delay1 <= w_mem_v2c_sign_dout;
+always@(posedge clk)	r_mem_v2c_sign_dout_delay2 <= r_mem_v2c_sign_dout_delay1;
+
 generate
 	for(i=0; i<PCM_ROWN; i=i+1)	begin: CN_S
 		for(j=0; j<BLK_SIZE; j=j+1) begin: CN_S_unit
@@ -373,7 +376,7 @@ generate
 			wire								w_cns_o_v2c_sign_tot;
 
 			assign	w_cns_i_v2c[i][j] = w_v2c_shift_bus[(BLK_SIZE*i+j+1)*MSG_WIDTH-1:(BLK_SIZE*i+j)*MSG_WIDTH];
-			assign	w_cns_i_v2c_sign_old = w_memvs_doutb[i*BLK_SIZE+j];
+			assign	w_cns_i_v2c_sign_old = r_mem_v2c_sign_dout_delay2[i*BLK_SIZE+j];
 			assign	w_cns_o_v2c_abs_bus[0][ABS_WID*(i*BLK_SIZE+j+1)-1: ABS_WID*(i*BLK_SIZE+j)] = w_cns_o_v2c_abs[ABS_WID-1:0];
 			assign	w_cns_o_v2c_abs_bus[1][ABS_WID*(i*BLK_SIZE+j+1)-1: ABS_WID*(i*BLK_SIZE+j)] = w_cns_o_v2c_abs[ABS_WID*2-1:ABS_WID];
 			assign	w_cns_o_v2c_idx_bus[COL_CNT_WID*(i*BLK_SIZE+j+1)-1: COL_CNT_WID*(i*BLK_SIZE+j)] = w_cns_o_v2c_idx;

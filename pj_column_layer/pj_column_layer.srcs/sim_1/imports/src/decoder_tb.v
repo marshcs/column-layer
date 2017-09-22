@@ -60,7 +60,7 @@ decoder #(
 )	tb_inst_decoder (
 .clk						(clk					),
 .rst_n						(rst_n					),
-.i_strength0				(6'd4					),
+.i_strength0				(6'd8					),
 .i_strength1				(6'd12					),
 .i_init_info				(i_init_info			),
 .i_init_info_valid			(i_init_info_valid		),
