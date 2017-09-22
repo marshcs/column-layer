@@ -1,4 +1,11 @@
-D:/cs/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/ip/llr_mem/llr_mem_stub.v {1 {vlog -work work -vopt D:/cs/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/ip/llr_mem/llr_mem_stub.v
+D:/cs/column-layer/pj_column_layer/pj_column_layer.srcs/sim_1/imports/src/decoder_tb.v {1 {vlog -work work -vopt D:/cs/column-layer/pj_column_layer/pj_column_layer.srcs/sim_1/imports/src/decoder_tb.v
+Model Technology ModelSim SE-64 vlog 10.2c Compiler 2013.07 Jul 19 2013
+-- Compiling module decoder_tb
+
+Top level modules:
+	decoder_tb
+
+} {} {}} D:/cs/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/ip/llr_mem/llr_mem_stub.v {1 {vlog -work work -vopt D:/cs/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/ip/llr_mem/llr_mem_stub.v
 Model Technology ModelSim SE-64 vlog 10.2c Compiler 2013.07 Jul 19 2013
 -- Compiling module llr_mem
 
@@ -198,21 +205,6 @@ Model Technology ModelSim SE-64 vlog 10.2c Compiler 2013.07 Jul 19 2013
 Top level modules:
 	cn_r
 
-} {} {}} D:/cs/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/ip/rom_shift/rom_shift_sim_netlist.v {1 {vlog -work work -vopt D:/cs/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/ip/rom_shift/rom_shift_sim_netlist.v
-Model Technology ModelSim SE-64 vlog 10.2c Compiler 2013.07 Jul 19 2013
--- Compiling module rom_shift
--- Compiling module rom_shift_blk_mem_gen_generic_cstr
--- Compiling module rom_shift_blk_mem_gen_prim_width
--- Compiling module rom_shift_blk_mem_gen_prim_wrapper_init
--- Compiling module rom_shift_blk_mem_gen_top
--- Compiling module rom_shift_blk_mem_gen_v8_3_5
--- Compiling module rom_shift_blk_mem_gen_v8_3_5_synth
--- Compiling module glbl
-
-Top level modules:
-	rom_shift
-	glbl
-
 } {} {}} E:/project/LDPCflsash/column-layer/src/decoder_tb.v {0 {vlog -work work -vopt E:/project/LDPCflsash/column-layer/src/decoder_tb.v
 Model Technology ModelSim SE-64 vlog 10.2c Compiler 2013.07 Jul 19 2013
 -- Compiling module decoder_tb
@@ -232,6 +224,21 @@ Model Technology ModelSim SE-64 vlog 10.2c Compiler 2013.07 Jul 19 2013
 
 Top level modules:
 	cn_s
+
+} {} {}} D:/cs/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/ip/rom_shift/rom_shift_sim_netlist.v {1 {vlog -work work -vopt D:/cs/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/ip/rom_shift/rom_shift_sim_netlist.v
+Model Technology ModelSim SE-64 vlog 10.2c Compiler 2013.07 Jul 19 2013
+-- Compiling module rom_shift
+-- Compiling module rom_shift_blk_mem_gen_generic_cstr
+-- Compiling module rom_shift_blk_mem_gen_prim_width
+-- Compiling module rom_shift_blk_mem_gen_prim_wrapper_init
+-- Compiling module rom_shift_blk_mem_gen_top
+-- Compiling module rom_shift_blk_mem_gen_v8_3_5
+-- Compiling module rom_shift_blk_mem_gen_v8_3_5_synth
+-- Compiling module glbl
+
+Top level modules:
+	rom_shift
+	glbl
 
 } {} {}} D:/cs/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/imports/src/barrel_shifter_pblk.v {1 {vlog -work work -vopt D:/cs/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/imports/src/barrel_shifter_pblk.v
 Model Technology ModelSim SE-64 vlog 10.2c Compiler 2013.07 Jul 19 2013
@@ -275,13 +282,6 @@ Model Technology ModelSim SE-64 vlog 10.2c Compiler 2013.07 Jul 19 2013
 Top level modules:
 	min
 
-} {} {}} D:/cs/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/ip/mem_app/mem_app_stub.v {1 {vlog -work work -vopt D:/cs/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/ip/mem_app/mem_app_stub.v
-Model Technology ModelSim SE-64 vlog 10.2c Compiler 2013.07 Jul 19 2013
--- Compiling module mem_app
-
-Top level modules:
-	mem_app
-
 } {} {}} D:/cs/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/imports/src/parity_check.v {1 {vlog -work work -vopt D:/cs/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/imports/src/parity_check.v
 Model Technology ModelSim SE-64 vlog 10.2c Compiler 2013.07 Jul 19 2013
 -- Compiling module parity_check
@@ -289,11 +289,11 @@ Model Technology ModelSim SE-64 vlog 10.2c Compiler 2013.07 Jul 19 2013
 Top level modules:
 	parity_check
 
-} {} {}} D:/cs/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/imports/src/decoder.v {1 {vlog -work work -vopt D:/cs/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/imports/src/decoder.v
+} {} {}} D:/cs/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/ip/mem_app/mem_app_stub.v {1 {vlog -work work -vopt D:/cs/column-layer/pj_column_layer/pj_column_layer.srcs/sources_1/ip/mem_app/mem_app_stub.v
 Model Technology ModelSim SE-64 vlog 10.2c Compiler 2013.07 Jul 19 2013
--- Compiling module decoder
+-- Compiling module mem_app
 
 Top level modules:
-	decoder
+	mem_app
 
 } {} {}}

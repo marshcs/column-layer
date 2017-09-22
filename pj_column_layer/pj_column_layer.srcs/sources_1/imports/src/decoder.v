@@ -222,7 +222,8 @@ rom_shift inst_rom_shift (
 // -------------------------v rom shift v-------------------------
 
 // -------------------------v cn_r	v--------------------------
-wire	[MSG_WIDTH*PCM_ROWN*BLK_SIZE-1:0]		w_cnr_o_c2v_bus;
+// wire	[MSG_WIDTH*PCM_ROWN*BLK_SIZE-1:0]		w_cnr_o_c2v_bus;
+wire	[MSG_WIDTH-1:0]				w_cnr_o_c2v_bus	[0:PCM_ROWN-1][0:BLK_SIZE-1];
 
 generate
 	for(i=0; i<PCM_ROWN; i=i+1) begin: CN_R
@@ -231,16 +232,12 @@ generate
 			wire	[COL_CNT_WID-1:0]	w_cnr_i_idx_0			;
 			wire						w_cnr_i_v2c_sign		;
 			wire						w_cnr_i_v2c_sign_tot	;
-			wire	[MSG_WIDTH-1:0]		w_cnr_o_r				;
-
 
 			assign	w_cnr_i_v2c_abs[0] = w_cns_o_v2c_abs_bus[0][ABS_WID*(i*BLK_SIZE+j+1)-1:ABS_WID*(i*BLK_SIZE+j)];
 			assign	w_cnr_i_v2c_abs[1] = w_cns_o_v2c_abs_bus[1][ABS_WID*(i*BLK_SIZE+j+1)-1:ABS_WID*(i*BLK_SIZE+j)];
 			assign	w_cnr_i_idx_0	   = w_cns_o_v2c_idx_bus[COL_CNT_WID*(i*BLK_SIZE+j+1)-1: COL_CNT_WID*(i*BLK_SIZE+j)];
 			assign	w_cnr_i_v2c_sign   = w_memvs_doutb[BLK_SIZE*i+j];
 			assign	w_cnr_i_v2c_sign_tot = w_cns_o_v2c_sign_tot_bus[i*BLK_SIZE+j];
-			assign	w_cnr_o_c2v_bus[MSG_WIDTH*(i*BLK_SIZE+j+1)-1:MSG_WIDTH*(i*BLK_SIZE+j)] = w_cnr_o_r;
-			
 			
 			cn_r #(
 				.MSG_WIDTH			(MSG_WIDTH		),
@@ -255,7 +252,7 @@ generate
 				.i_v2c_sign_tot		(w_cnr_i_v2c_sign_tot		),
 				.i_col_cnt			(r_decode_cnt_delay[0]		),
 				.i_is_first_iter	(r_is_first_iter_delay[0]	),
-				.o_c2v				(w_cnr_o_r					)
+				.o_c2v				(w_cnr_o_c2v_bus[i][j]		)
 			);
 
 		end
@@ -266,16 +263,18 @@ endgenerate
 
 // -------------------------v barrel shifter v----------------
 wire		[MSG_WIDTH*BLK_SIZE*PCM_ROWN-1:0]	w_c2v_shift_bus;
-
+wire		[GF_SIZE_LOG2-1:0]					w_bs_shifter_offset	[0:PCM_ROWN-1];
 generate
 	for(i=0; i<PCM_ROWN; i=i+1)	begin: Barrel_Shifter
 		
-		wire	[GF_SIZE_LOG2-1:0]				w_bs_shifter_offset	;
+		// wire	[GF_SIZE_LOG2-1:0]				w_bs_shifter_offset	;
 		wire	[MSG_WIDTH*BLK_SIZE-1:0]		w_bs_i_data			;
 		wire	[MSG_WIDTH*BLK_SIZE-1:0]		w_bs_o_data			;
 
-		assign	w_bs_shifter_offset = w_rom_shift_dout[GF_SIZE_LOG2*(i+1)-1:GF_SIZE_LOG2*i];
-		assign	w_bs_i_data = w_cnr_o_c2v_bus[MSG_WIDTH*BLK_SIZE*(i+1)-1:MSG_WIDTH*BLK_SIZE*i];
+		assign	w_bs_shifter_offset[i] = w_rom_shift_dout[GF_SIZE_LOG2*(i+1)-1:GF_SIZE_LOG2*i];
+		for(j=0; j<BLK_SIZE; j=j+1)	begin
+			assign	w_bs_i_data[MSG_WIDTH*(j+1)-1:MSG_WIDTH*j] = w_cnr_o_c2v_bus[i][j];
+		end
 		assign	w_c2v_shift_bus[MSG_WIDTH*BLK_SIZE*(i+1)-1:MSG_WIDTH*BLK_SIZE*i] = w_bs_o_data;
 
 		barrel_shifter_pblk #(
@@ -283,10 +282,10 @@ generate
 			.DATA_NUM			(BLK_SIZE			),			
 			.SHIFT_OFFSET_WIDTH (GF_SIZE_LOG2		) 
 		) inst_barrel_shifter_pblk(
-			.i_blk_ena		(1'b1				),	
-			.i_shift_offset	(w_bs_shifter_offset),	
-			.i_data			(w_bs_i_data		),	
-			.o_shift_data	(w_bs_o_data		)	
+			.i_blk_ena		(1'b1					),	
+			.i_shift_offset	(w_bs_shifter_offset[i]	),	
+			.i_data			(w_bs_i_data			),	
+			.o_shift_data	(w_bs_o_data			)	
 		);
 	end
 endgenerate
@@ -296,14 +295,14 @@ endgenerate
 
 wire	[MSG_WIDTH*BLK_SIZE*PCM_ROWN-1:0]	w_vn_v2c_bus;
 wire	[BLK_SIZE-1:0]						w_vn_o_app;
+wire	[MSG_WIDTH-1:0]						w_vn_llr		[0:BLK_SIZE-1];
 generate
 	for(j=0; j<BLK_SIZE; j=j+1)	begin: VN
 
-		wire	[MSG_WIDTH-1:0]				w_vn_llr;
 		wire	[MSG_WIDTH*PCM_ROWN-1:0]	w_vn_c2v;
 		wire	[MSG_WIDTH*PCM_ROWN-1:0]	w_vn_o_v2c;
 		
-		assign	w_vn_llr =	llr_mem_dout[INIT_INFO_WID*(j+1)-1:INIT_INFO_WID*j]== 2'b00 ? i_strength0 
+		assign	w_vn_llr[j] =	llr_mem_dout[INIT_INFO_WID*(j+1)-1:INIT_INFO_WID*j]== 2'b00 ? i_strength0 
 								: llr_mem_dout[INIT_INFO_WID*(j+1)-1:INIT_INFO_WID*j]== 2'b01 ? i_strength1
 									: llr_mem_dout[INIT_INFO_WID*(j+1)-1:INIT_INFO_WID*j]== 2'b10 ? 1 + ~i_strength0
 										: 1 + ~i_strength1;
@@ -318,7 +317,7 @@ generate
 		) inst_vn (
 			.i_clk		(clk			),	
 			.i_rst_n	(rst_n			),	
-			.i_llr		(w_vn_llr		),	
+			.i_llr		(w_vn_llr[j]	),	
 			.i_c2v_bus	(w_vn_c2v		),	
 			.o_app		(w_vn_o_app[j]	),	
 			.o_v2c_bus	(w_vn_o_v2c		)	
@@ -332,7 +331,7 @@ endgenerate
 // -------------------------v vn v ---------------------------
 
 // -------------------------v reverse barrel shifter v----------------
-wire		[MSG_WIDTH*BLK_SIZE*PCM_ROWN-1:0]	w_c2v_new_shift_bus;
+wire		[MSG_WIDTH*BLK_SIZE*PCM_ROWN-1:0]	w_v2c_shift_bus;
 reg			[GF_SIZE_LOG2-1:0]					r_bsr_shifter_offset	[0:PCM_ROWN-1];
 generate
 	for(i=0; i<PCM_ROWN; i=i+1)	begin: Barrel_Shifter_Rev		
@@ -340,7 +339,7 @@ generate
 		wire	[MSG_WIDTH*BLK_SIZE-1:0]		w_bsr_o_data			;
 
 		assign	w_bsr_i_data = w_vn_v2c_bus[MSG_WIDTH*BLK_SIZE*(i+1)-1:MSG_WIDTH*BLK_SIZE*i];
-		assign	w_c2v_new_shift_bus[MSG_WIDTH*BLK_SIZE*(i+1)-1:MSG_WIDTH*BLK_SIZE*i] = w_bsr_o_data;
+		assign	w_v2c_shift_bus[MSG_WIDTH*BLK_SIZE*(i+1)-1:MSG_WIDTH*BLK_SIZE*i] = w_bsr_o_data;
 
 		always@(posedge clk)	begin
 			r_bsr_shifter_offset[i] <= BLK_SIZE - w_rom_shift_dout[GF_SIZE_LOG2*(i+1)-1:GF_SIZE_LOG2*i];
@@ -361,18 +360,19 @@ endgenerate
 // -------------------------^ reverse barrel shifter ^----------------
 
 // -------------------------v cn-s v----------------------------------
+wire		[MSG_WIDTH-1:0]						w_cns_i_v2c	[0:PCM_ROWN-1][0:BLK_SIZE-1];
 generate
 	for(i=0; i<PCM_ROWN; i=i+1)	begin: CN_S
 		for(j=0; j<BLK_SIZE; j=j+1) begin: CN_S_unit
 
-			wire	[MSG_WIDTH-1:0]				w_cns_i_v2c			;
+			// wire	[MSG_WIDTH-1:0]				w_cns_i_v2c			;
 			wire								w_cns_i_v2c_sign_old;
 			wire	[ABS_WID*2-1:0]				w_cns_o_v2c_abs		;
 			wire	[COL_CNT_WID-1	:0]			w_cns_o_v2c_idx		;
 			wire								w_cns_o_v2c_sign	;
 			wire								w_cns_o_v2c_sign_tot;
 
-			assign	w_cns_i_v2c = w_c2v_new_shift_bus[(BLK_SIZE*i+j+1)*MSG_WIDTH-1:(BLK_SIZE*i+j)*MSG_WIDTH];
+			assign	w_cns_i_v2c[i][j] = w_v2c_shift_bus[(BLK_SIZE*i+j+1)*MSG_WIDTH-1:(BLK_SIZE*i+j)*MSG_WIDTH];
 			assign	w_cns_i_v2c_sign_old = w_memvs_doutb[i*BLK_SIZE+j];
 			assign	w_cns_o_v2c_abs_bus[0][ABS_WID*(i*BLK_SIZE+j+1)-1: ABS_WID*(i*BLK_SIZE+j)] = w_cns_o_v2c_abs[ABS_WID-1:0];
 			assign	w_cns_o_v2c_abs_bus[1][ABS_WID*(i*BLK_SIZE+j+1)-1: ABS_WID*(i*BLK_SIZE+j)] = w_cns_o_v2c_abs[ABS_WID*2-1:ABS_WID];
@@ -388,7 +388,7 @@ generate
 				.i_clk			(clk					),
 				.i_rst_n		(rst_n					),
 				.i_vld			(r_decoding_delay[2]	),	
-				.i_v2c			(w_cns_i_v2c			),
+				.i_v2c			(w_cns_i_v2c[i][j]		),
 				.i_col_cnt		(r_decode_cnt_delay[2]	),
 				.i_v2c_sign_old	(w_cns_i_v2c_sign_old	),
 				.o_v2c_abs		(w_cns_o_v2c_abs		),
@@ -433,10 +433,10 @@ parity_check #(
 
 // -------------------------^ parity check ^-------------------------
 
-// -------------------------v Output Assign v-------------------------
+// -------------------------v Output assign v-------------------------
 assign	o_decode_end = o_parity_check_satisfied || (r_decode_cnt == PCM_COLN-1 && r_iter_cnt == MAX_ITER-1); 
 assign	o_decoded_info_valid = r_decode_end && r_output_cnt >= RW_LATENCY && r_output_cnt < PCM_COLN + RW_LATENCY;
 assign	o_decoded_info_last = r_decode_end && r_output_cnt == PCM_COLN + RW_LATENCY - 1;
-// -------------------------v Output Assign v-------------------------
+// -------------------------v Output assign v-------------------------
 
 endmodule

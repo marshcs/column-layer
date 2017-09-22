@@ -60,7 +60,7 @@ decoder #(
 )	tb_inst_decoder (
 .clk						(clk					),
 .rst_n						(rst_n					),
-.i_strength0				(6'd8					),
+.i_strength0				(6'd4					),
 .i_strength1				(6'd12					),
 .i_init_info				(i_init_info			),
 .i_init_info_valid			(i_init_info_valid		),
@@ -84,10 +84,13 @@ initial	begin
 end
 
 always @(posedge	clk)	begin
-	if(~rst_n)				cnt <= 0;
-	else					cnt <= cnt+1;
+	if(~rst_n)							cnt <= 0;
+	else								cnt <= cnt+1;
 end
 
+reg		[BLK_SIZE*INIT_INFO_WID-1:0]	r_init_info		[0:PCM_COLN-1];
+
+initial	$readmemb("D:/cs/column-layer/mat/decoder_vss/llr.txt", r_init_info);
 
 always@(posedge clk)	begin
 	if(~rst_n)							i_init_info_valid <= 0;
@@ -97,8 +100,7 @@ end
 
 always@(posedge clk)	begin
 	if(~rst_n)							i_init_info <= 0;
-	else if(cnt >=305 && cnt < 308)		i_init_info <= {{3{2'b10}},{240{1'b0}},{4{2'b10}}};
-	else if(cnt >=310 && cnt < 312)		i_init_info <= {{4{2'b10}},{246{1'b0}}};
+	else if(cnt >=301 && cnt < 373)		i_init_info <= r_init_info[cnt-301];
 	else								i_init_info <= 0;
 end
 
