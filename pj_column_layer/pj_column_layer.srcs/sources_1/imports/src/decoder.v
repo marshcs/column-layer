@@ -43,7 +43,7 @@ localparam	BLK_SIZE 			= (1 << GF_SIZE_LOG2) - 1;
 localparam	COL_CNT_WID			= clog2(PCM_COLN);
 localparam	ITER_CNT_WID		= clog2(MAX_ITER);	
 localparam	ABS_WID				= MSG_WIDTH - 1;
-localparam	MAX_DELAY			= 4;
+localparam	PIPE_STAGE			= 4;
 
 
 // cn-s
@@ -83,13 +83,13 @@ genvar j;
 
 reg	[COL_CNT_WID-1:0]		r_decode_cnt;	
 reg	[ITER_CNT_WID-1:0]		r_iter_cnt;
-reg							r_decoding;
 wire 						w_decode_begin;
 reg							r_decode_end; 		// 译码结束，输出结果
-reg							r_is_first_iter;
+wire						w_is_first_iter;
 reg	[COL_CNT_WID-1:0] 		r_output_cnt;
 
-assign	w_decode_begin = i_init_info_valid && o_init_info_ready && r_decoding == 0;
+assign	w_decode_begin = i_init_info_valid && o_init_info_ready && r_decoding_delay[0] == 0;
+assign	w_is_first_iter = i_init_info_valid && o_init_info_ready;
 
 always@(posedge clk)	begin
 	if(~rst_n)												o_init_info_ready <= 1;
@@ -100,49 +100,43 @@ always@(posedge clk)	begin
 	else;
 end
 
-always@(posedge clk)	begin
-	if(~rst_n)												r_decoding <= 0;
-	else if(w_decode_begin)									r_decoding <= 1;
-	else if(o_decode_end)									r_decoding <= 0;
-	else;
-end
-
-always@(posedge clk)	begin
-	if(~rst_n)												r_is_first_iter <= 0;
-	else if(w_decode_begin)									r_is_first_iter <= 1;
-	else if(r_decoding && r_decode_cnt == PCM_COLN-1 && r_iter_cnt == 0)
-															r_is_first_iter <= 0;
-	else;
-end
-
 always @(posedge clk) begin
-	if(~rst_n)									         	r_decode_cnt <= 0;
-    else if(w_decode_begin)									r_decode_cnt <= 0;
-	else if(r_decoding)										r_decode_cnt <= r_decode_cnt == PCM_COLN-1 ? 0 : r_decode_cnt + 1;
+	if(~rst_n)												r_decode_cnt <= 0;
+	else if(o_decode_end)									r_decode_cnt <= 0;
+    else if(w_decode_begin)									r_decode_cnt <= 1;
+	else if(r_decoding_delay[0])							r_decode_cnt <= r_decode_cnt == PCM_COLN-1 ? 0 : r_decode_cnt + 1;
 	else;
 end
 
 always@(posedge clk)	begin
-	if(~rst_n)												r_iter_cnt <= 0;
-	else if(o_decode_end)									r_iter_cnt <= 0;
-	else if(r_decoding && r_decode_cnt == PCM_COLN-1)		r_iter_cnt <= (r_iter_cnt == MAX_ITER-1) ? 0 : r_iter_cnt + 1 ;
+	if(~rst_n)													r_iter_cnt <= 0;
+	else if(o_decode_end)										r_iter_cnt <= 0;
+	else if(r_decoding_delay[0] && r_decode_cnt == PCM_COLN-1)	r_iter_cnt <= (r_iter_cnt == MAX_ITER-1) ? 0 : r_iter_cnt + 1 ;
 	else;
 end
 
 // 计数延迟
-reg	[MAX_DELAY-1:0]		r_decode_begin_delay;
-reg	[MAX_DELAY-1:0]		r_decoding_delay;
-reg	[MAX_DELAY-1:0]		r_is_first_iter_delay;
-reg	[COL_CNT_WID-1:0]	r_decode_cnt_delay	[0:MAX_DELAY-1];
+reg	[PIPE_STAGE-1:0]		r_decode_begin_delay;
+reg	[PIPE_STAGE-1:0]		r_decoding_delay;
+reg	[PIPE_STAGE-1:0]		r_is_first_iter_delay;
+reg	[COL_CNT_WID-1:0]		r_decode_cnt_delay		[0:PIPE_STAGE-1];
 
-always@(posedge clk)	r_decode_begin_delay 	<= {r_decode_begin_delay[MAX_DELAY-2:0],w_decode_begin};
-always@(posedge clk)	r_decoding_delay 		<= {r_decoding_delay[MAX_DELAY-2:0],r_decoding};
-always@(posedge clk)	r_is_first_iter_delay 	<= {r_is_first_iter_delay[MAX_DELAY-2:0],r_is_first_iter};
+always@(posedge clk)	begin
+	if(~rst_n)												r_decoding_delay[0] <= 0;
+	else if(o_decode_end)									r_decoding_delay[0] <= 0;
+	else if(w_decode_begin)									r_decoding_delay[0] <= 1;
+	else;
+end
+
+always@(posedge clk)	r_decode_begin_delay 	<= {r_decode_begin_delay[PIPE_STAGE-2:0],w_decode_begin};
+always@(posedge clk)	r_decoding_delay 		<= {r_decoding_delay[PIPE_STAGE-2:0],r_decoding_delay[0]};
+always@(posedge clk)	r_is_first_iter_delay 	<= {r_is_first_iter_delay[PIPE_STAGE-2:0],r_is_first_iter};
 generate
-	for ( i=0; i<MAX_DELAY; i=i+1 ) begin: COUNT_DELAY
+	for ( i=0; i<PIPE_STAGE; i=i+1 ) begin: COUNT_DELAY
 		always @(posedge clk) begin
 			if(~rst_n)										r_decode_cnt_delay[i] <= 0;
-    		else if(r_decode_begin_delay[i])				r_decode_cnt_delay[i] <= 0;
+			else if(o_decode_end)							r_decode_cnt_delay[i] <= 0;
+    		else if(r_decode_begin_delay[i])				r_decode_cnt_delay[i] <= 1;
 			else if(r_decoding_delay[i])					r_decode_cnt_delay[i] <= r_decode_cnt_delay[i] == PCM_COLN-1 ? 0 : r_decode_cnt_delay[i] + 1;
 			else;
 		end
@@ -175,7 +169,7 @@ wire	[COL_CNT_WID-1:0]				llr_mem_addr;
 wire	[INIT_INFO_WID*BLK_SIZE-1:0]	llr_mem_din;
 wire	[INIT_INFO_WID*BLK_SIZE-1:0]	llr_mem_dout;
 
-assign	llr_mem_wea		= r_is_first_iter;
+assign	llr_mem_wea		= i_init_info_valid && o_init_info_ready;
 assign	llr_mem_addr	= r_decode_cnt;
 assign	llr_mem_din		= i_init_info;
 
@@ -192,6 +186,7 @@ llr_mem inst_llr_mem 	(
 	/*	-simple dual port ram
 		- width: BLK_SIZE * PCM_ROWN
 		- depth: PCM_COLN
+		- with rst
 	*/
 wire	[1*BLK_SIZE*PCM_ROWN-1:0]	w_mem_v2c_sign_dout;
 
